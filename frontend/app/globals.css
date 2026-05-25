@@ -1,8 +1,47 @@
 @import "tailwindcss";
+/* The import below causes a parsing error... */
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;Manrope:wght@600;700&display=swap'); */
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* COLORS */
+  --black: #000;
+  --neutral-grey-950: #0f0f0f;
+  --neutral-grey-800: #1f1f1f;
+  --neutral-grey-600: #6b7280;
+  --neutral-grey-400: #9ca3af;
+  --neutral-grey-200: #e5e7eb;
+  --neutral-grey-100: #f3f4f6;
+  --neutral-grey-50: #f9fafb;
+  --neutral-white: #ffffff;
+  --system-succes-green-light: #f1fff7;
+  --system-success-green: #27ae60;
+  --system-error-red-light: #ffe0e0;
+  --system-error-red: #ef4444;
+  --system-warning-orange-light: #fff0d7;
+  --system-warning-orange: #e08d00;
+  --system-info-blue-light: #e0ecff;
+  --system-info-blue: #3b82f6;
+  --brand-light-orange: #ffe8d9;
+  --brand-dark-orange: #d3590b;
+  --neutral-grey-200: #e5e7eb;
+  --neutral-grey-600: #6b7280;
+
+  /* TYPOGRAPHY */
+  --font-manrope: 'Manrope', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-size-h1: 40px;
+  --font-size-h4: 24px;
+  --font-size-h5: 18px;
+  --font-size-l: 18px;
+  --font-size-m: 16px;
+  --font-size-s: 14px;
+  --font-size-xs: 12px;
+  --font-size-2xs: 10px;
+  --font-weight-400: 400;
+  --font-weight-600: 600;
 }
 
 @theme inline {
@@ -23,4 +62,170 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* HEADINGS */
+
+.headings-h1-brand-dark-orange {
+  font-family: var(--font-manrope);
+  font-weight: 700;
+  font-size: var(--font-size-h1);
+  color: var(--brand-dark-orange);
+}
+
+.headings-h4-neutral-grey-800 {
+  font-family: var(--font-manrope);
+  font-weight: 600;
+  font-size: var(--font-size-h4);
+}
+
+.headings-h5-neutral-grey-800,
+.headings-h5-black {
+  font-family: var(--font-manrope);
+  font-weight: 600;
+  font-size: var(--font-size-h5);
+}
+
+.headings-h4-neutral-grey-800,
+.headings-h5-neutral-grey-800 {
+  color: var(--neutral-grey-800);
+}
+
+.headings-h5-black {
+  color: var(--black);
+}
+
+/* TEXT */
+.body-l-black {
+  font-family: var(--font-inter);
+  font-weight: 400;
+  font-size: var(--font-size-l);
+}
+
+.body-m-black,
+.body-m-neutral-white,
+.body-m-dark-orange,
+.body-m-neutral-grey-400 {
+  font-family: var(--font-inter);
+  font-weight: 400;
+  font-size: var(--font-size-m);
+}
+
+.body-m-black {
+  color: var(--black);
+}
+
+.body-m-neutral-white {
+  color: var(--neutral-white);
+}
+
+.body-m-dark-orange {
+  color: var(--brand-dark-orange);
+}
+
+.body-m-neutral-grey-400 {
+  color: var(--neutral-grey-400);
+}
+
+.body-s-black,
+.body-s-dark-orange,
+.body-s-neutral-grey-400,
+.body-s-neutral-grey-600,
+.body-s-neutral-grey-800,
+.body-s-neutral-grey-950,
+.body-s-system-info-blue,
+.body-s-system-warning-orange,
+.body-s-system-error-red,
+.body-s-system-success-green,
+.body-xs-neutral-grey-600,
+.body-xs-neutral-grey-800,
+.body-2xs-black,
+.body-2xs-neutral-grey-600,
+.body-2xs-neutral-grey-950,
+.caption-l-neutral-white,
+.caption-l-neutral-grey-950 {
+  font-family: var(--font-inter);
+  font-weight: 400;
+  font-size: var(--font-size-s);
+}
+
+.body-s-black {
+  color: var(--black);
+}
+
+.body-s-dark-orange {
+  color: var(--brand-dark-orange);
+}
+
+.body-s-neutral-grey-400 {
+  color: var(--neutral-grey-400);
+}
+
+.body-s-neutral-grey-600 {
+  color: var(--neutral-grey-600);
+}
+
+.body-s-neutral-grey-800 {
+  color: var(--neutral-grey-800);
+}
+
+.body-s-neutral-grey-950 {
+  color: var(--neutral-grey-950);
+}
+
+.body-s-system-info-blue {
+  color: var(--system-info-blue);
+}
+
+.body-s-system-warning-orange {
+  color: var(--system-warning-orange);
+}
+
+.body-s-system-error-red {
+  color: var(--system-error-red);
+}
+
+.body-s-system-success-green {
+  color: var(--system-success-green);
+}
+
+.body-xs-neutral-grey-600,
+.body-xs-neutral-grey-800 {
+  font-size: var(--font-size-xs);
+}
+
+.body-xs-neutral-grey-600 {
+  color: var(--neutral-grey-600);
+}
+
+.body-xs-neutral-grey-800 {
+  color: var(--neutral-grey-800);
+}
+
+.body-2xs-black,
+.body-2xs-neutral-grey-600,
+.body-2xs-neutral-grey-950,
+.caption-2xs-neutral-grey-950 {
+  font-size: var(--font-size-2xs);
+}
+
+.body-2xs-black {
+  color: var(--black);
+}
+
+.body-2xs-neutral-grey-600 {
+  color: var(--neutral-grey-600);
+}
+
+.body-2xs-neutral-grey-950 {
+  color: var(--neutral-grey-950);
+}
+
+.caption-l-neutral-white {
+  color: var(--neutral-white);
+}
+
+.caption-2xs-neutral-grey-950,
+.caption-l-neutral-grey-950 {
+  color: var(--neutral-grey-950);
 }
