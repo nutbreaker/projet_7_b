@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Inter } from "next/font/google";
+import Header from "@/components/header/header";
+import Footer from "@/components/footer/footer";
 import "./globals.css";
 
 // I've no words for this...
@@ -28,10 +30,16 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-       className={`${manrope.variable} ${inter.variable} h-full antialiased`}
+      lang="fr"
+      className={`${manrope.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Header />
+        <main className="grow">
+          {children}
+        </main>
+        <Footer />
+      </body>
     </html>
   );
 }
