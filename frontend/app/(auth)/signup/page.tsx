@@ -15,7 +15,7 @@ export default function SignUp() {
 
         <div className="form-container">
           <AuthForm
-            formAction={pathname}
+            formAction={(formData)=>console.log(formData)}
             formTitle="Inscription"
             submitButtonLabel="S'inscrire"
           />

@@ -1,13 +1,12 @@
 'use client';
-
-import { usePathname } from 'next/navigation';
+import { useActionState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import AuthForm from "@/components/auth-form/auth-form";
-
+import {default as AuthForm, LoginFormState} from "@/components/auth-form/auth-form";
+import { handleSignin } from './actions';
 
 export default function SignIn() {
-  const pathname = usePathname();
+  const [state, formAction] = useActionState(handleSignin, { error: '', fields: { email: '' } });
 
   return (
     <div className="content">
@@ -16,7 +15,8 @@ export default function SignIn() {
 
         <div className="form-container">
           <AuthForm
-            formAction={pathname}
+            formAction={formAction}
+            formState={state as LoginFormState}
             formTitle="Connexion"
             submitButtonLabel="Se connecter"
           />

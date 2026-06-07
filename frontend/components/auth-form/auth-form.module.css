@@ -32,3 +32,7 @@
     border-radius: 10px;
     cursor: pointer;
 }
+
+.error-message {
+    text-align: center;
+}
