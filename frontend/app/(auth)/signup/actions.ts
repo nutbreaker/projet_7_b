@@ -1,6 +1,6 @@
 'use server';
 
-import { cookies } from 'next/headers';
+import { setSessionCookie } from '@/services/session';
 import { redirect } from 'next/navigation';
 
 // https://nextjs.org/docs/app/guides/forms
@@ -29,14 +29,7 @@ export async function handleSignup(prevState: any, formData: FormData) {
             };
         }
 
-        const cookieStore = await cookies();
-        cookieStore.set('session_token', json.token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            maxAge: 60 * 60 * 24 * 7,
-            path: '/',
-        });
-
+        await setSessionCookie(json?.data?.token);
     } catch (error: any) {
         console.error('Erreur handleSignup:', error);
         // throw error;
