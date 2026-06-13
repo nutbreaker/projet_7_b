@@ -1,12 +1,13 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { useActionState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import AuthForm from "@/components/auth-form/auth-form";
+import {default as AuthForm, LoginFormState}  from "@/components/auth-form/auth-form";
+import { handleSignup } from './actions';
 
 export default function SignUp() {
-  const pathname = usePathname();
+    const [state, formAction] = useActionState(handleSignup, { error: '', fields: { email: '' } });
 
   return (
     <div className="content">
@@ -15,7 +16,8 @@ export default function SignUp() {
 
         <div className="form-container">
           <AuthForm
-            formAction={(formData)=>console.log(formData)}
+            formAction={formAction}
+            formState={state as LoginFormState}
             formTitle="Inscription"
             submitButtonLabel="S'inscrire"
           />

@@ -5,12 +5,12 @@ import { redirect } from 'next/navigation';
 
 // https://nextjs.org/docs/app/guides/forms
 
-export async function handleSignin(prevState: any, formData: FormData) {
+export async function handleSignup(prevState: any, formData: FormData) {
     const email = formData.get('email');
     const password = formData.get('password');
 
     try {
-        const response = await fetch('http://localhost:8000/auth/login', {
+        const response = await fetch('http://localhost:8000/auth/register', {
             method: 'POST',
             body: JSON.stringify({ email, password }),
             headers: {
@@ -20,10 +20,11 @@ export async function handleSignin(prevState: any, formData: FormData) {
         const json = await response.json();
 
         if (!response.ok) {
-            // throw new Error(json.message || 'Une erreur est survenue lors de la connexion.');
-
+            const { message, data: {
+                errors: [{ message: fieldMessage }] = [{}]
+            } = {} } = json;
             return {
-                error: json.message || 'Une erreur est survenue lors de la connexion.',
+                error: `${message}. ${fieldMessage}` || 'Une erreur est survenue lors de l\'inscription.',
                 fields: { email }
             };
         }
@@ -37,7 +38,7 @@ export async function handleSignin(prevState: any, formData: FormData) {
         });
 
     } catch (error: any) {
-        console.error('Erreur handleSignin:', error);
+        console.error('Erreur handleSignup:', error);
         // throw error;
 
         return {
