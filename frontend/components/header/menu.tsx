@@ -4,6 +4,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import MenuItem from '@/components/header/menu-item';
+import styles from './menu.module.css';
 
 export default function Menu() {
     // https://nextjs.org/docs/app/api-reference/functions/use-pathname
@@ -12,20 +13,21 @@ export default function Menu() {
 
 
     return (
-        <nav className="grow" aria-label="Menu principal">
-            <ul className="flex place-items-center gap-[16px]">
-                <li className="ml-auto">
+        <nav className={styles.menu} aria-label="Menu principal">
+            <ul>
+                <li className={styles['item-left']}>
                     <MenuItem textContent="Tableau de bord" href="/dashboard" imgSrc="/assets/dashboard-icon.svg" imgAlt="Icône Tableau de bord" isPathActive={isPathActive('/dashboard')} />
                 </li>
-                <li className="mr-auto">
+                <li className={styles['item-right']}>
                     <MenuItem textContent="Projets" href="/project" imgSrc="/assets/projects-icon.svg" imgAlt="Icône projets" isPathActive={isPathActive('/project')} />
                 </li>
                 <li>
-                    <Link href="/profile" className={`flex place-items-center place-content-center w-[65px] h-[65px] rounded-full text-(--neutral-grey-950) hover:text-(--neutral-white)
-                        ${isPathActive('/profile')
-                            ? 'bg-(--brand-dark-orange) text-(--neutral-white)'
-                            : 'bg-(--brand-light-orange) hover:bg-(--brand-dark-orange)'
-                        }`}>AD</Link>
+                    <Link href="/profile"
+                        className={`
+                            ${styles['profile-link']}
+                            ${
+                                isPathActive('/profile') && styles['profile-link-active']
+                            }`}>AD</Link>
                 </li>
             </ul>
         </nav>

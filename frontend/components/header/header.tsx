@@ -2,7 +2,8 @@ import Link from 'next/link';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Menu from '@/components/header/menu';
-
+// https://nextjs.org/docs/app/getting-started/css#css-modules
+import styles from './header.module.css';
 
 export default async function Header() {
     // https://nextjs.org/docs/pages/guides/authentication#optimistic-checks-with-proxy-optional
@@ -13,7 +14,7 @@ export default async function Header() {
 
     return (
         <header>
-            <div className="flex place-items-center max-w-[1440px] h-[94px] mx-auto px-[100px] bg-(--neutral-white)">
+            <div className={styles.container}>
 
                 <h1>
                     <Link href="/">

@@ -1,6 +1,7 @@
 
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
+import './styles.css';
 
 // https://nextjs.org/docs/app/api-reference/file-conventions/route-groups
 
@@ -11,7 +12,7 @@ export default function AppLayout({
 }) {
     return (<>
         <Header />
-        <main className="grow">
+        <main>
             {children}
         </main>
         <Footer />

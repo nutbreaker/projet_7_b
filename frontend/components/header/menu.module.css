@@ -1,0 +1,36 @@
+.menu {
+    flex-grow: 1;
+}
+
+.menu > ul {
+    display: flex;
+    place-items: center;
+    gap: 16px;
+    list-style: none;
+}
+
+.item-left {
+    margin-left: auto;
+}
+
+.item-right {
+    margin-right: auto;
+}
+
+.profile-link {
+    display: flex;
+    place-items: center;
+    place-content: center;
+    
+    width: 65px;
+    height: 65px;
+    
+    border-radius: 50%;
+    color: var(--neutral-grey-950);
+    background-color: var(--brand-light-orange);
+}
+
+.profile-link:hover, .profile-link-active {
+    color: var(--neutral-white);
+    background-color: var(--brand-dark-orange);
+}

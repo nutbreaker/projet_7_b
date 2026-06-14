@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    place-items: center;
+    max-width: 1440px;
+    height: 94px;
+    margin:auto;
+    padding-inline: 100px;;
+    background-color: var(--neutral-white);
+}
+
+.menu {
+    flex-grow: 1;
+}
