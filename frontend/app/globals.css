@@ -107,7 +107,8 @@ a {
 .body-m-black,
 .body-m-neutral-white,
 .body-m-dark-orange,
-.body-m-neutral-grey-400 {
+.body-m-neutral-grey-400,
+.body-m-neutral-grey-600 {
   font-family: var(--font-inter);
   font-weight: 400;
   font-size: var(--font-size-m);
@@ -127,6 +128,10 @@ a {
 
 .body-m-neutral-grey-400 {
   color: var(--neutral-grey-400);
+}
+
+.body-m-neutral-grey-600 {
+  color: var(--neutral-grey-600);
 }
 
 .body-s-black,
