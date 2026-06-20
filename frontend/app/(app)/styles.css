@@ -1,0 +1,17 @@
+main {
+    flex-grow: 1;
+}
+
+main>div {
+    display: flex;
+    place-items: center;
+    max-width: 1440px;
+    margin: auto;
+    padding-inline: 100px;
+}
+
+@media (max-width: 1024px) {
+    main>div {
+        padding-inline: 10px;
+    }
+}

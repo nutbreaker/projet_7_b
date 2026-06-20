@@ -1,0 +1,32 @@
+.button {
+    padding: 15.5px 27.5px;
+
+    border: 1px solid var(--neutral-grey-950);
+    border-radius: 10px;
+    background-color: var(--neutral-grey-950);
+
+    cursor: pointer;
+}
+
+.button:hover {
+    color: var(--brand-dark-orange);
+    border-color: var(--brand-dark-orange);
+    background-color: var(--neutral-white);
+}
+
+.button:disabled {
+    color: var(--neutral-grey-400);
+
+    border-color: var(--neutral-grey-200);
+    background-color: var(--neutral-grey-200);
+}
+
+.button-waiting {
+    cursor: wait;
+}
+
+@media (max-width: 1024px) {
+  .button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,44 @@
+.profile {
+    padding-top: 57px;
+}
+
+.profile-title {
+    margin-block: 0 8px;
+}
+
+.profile-subtitle {
+    margin-block: 0;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 41px;
+
+    width: 100%;
+
+    padding: 40px 59px;
+
+    border-radius: 10px;
+    border: 1px solid var(--neutral-grey-200);
+    background-color: var(--neutral-white);
+}
+
+.form-body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    label {
+        flex-direction: column;
+        display: flex;
+        gap: 7px;
+    }
+
+    input {
+        padding: 19px 17px;
+
+        border: solid 1px var(--neutral-grey-200);
+        border-radius: 4px;
+    }
+}
