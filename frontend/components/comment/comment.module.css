@@ -1,0 +1,42 @@
+.task-comment {
+    display: flex;
+    gap: 14px;
+}
+
+.task-comment-initials {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    
+    width: 27px;
+    height: 27px;
+    
+    padding: 10px 6px;
+
+    font-size: var(--font-size-2xs);
+    color: var(--neutral-grey-950);
+    
+    border: 1px solid var(--neutral-white);
+}
+
+.task-comment-content {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    gap: 18px;
+
+    padding: 18px 14px;
+
+    border-radius: 10px;
+    background-color: var(--neutral-grey-100);
+
+    h5 {
+        flex: 1 1 50%;
+        margin: 0;
+    }
+
+    p {
+        margin: 0;
+    }
+}
