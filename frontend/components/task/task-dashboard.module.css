@@ -1,0 +1,87 @@
+.task-dashboard {
+    display: flex;
+    flex-direction: column;
+
+    padding: 32px 40px;
+
+    background-color: var(--neutral-white);
+    border: solid 1px var(--neutral-grey-200);
+    border-radius: 10px;
+}
+
+.task-dashboard-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    h5,
+    p {
+        margin: 0;
+    }
+}
+
+.task-dashboard-header-tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.task-dashboard-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 32px;
+
+    margin-top: 32px;
+
+    ul {
+        display: flex;
+        align-self: center;
+        gap: 15px;
+
+        margin: 0;
+        padding: 0;
+
+        list-style: none;
+        font-size: var(--font-size-xs);
+        color: var(--neutral-grey-600);
+    }
+
+    span {
+        display: flex;
+        gap: 8px;
+    }
+}
+
+.task-dashboard-project-name::before {
+    content: url('assets/folder.svg');
+}
+
+.task-dashboard-due-date::before {
+    content: url('assets/calendar.svg');
+}
+
+.task-dashboard-comments::before {
+    content: url('assets/comment.svg');
+}
+
+.task-dashboard-separator {
+    color: var(--neutral-grey-400);
+}
+
+.task-dashboard-link {
+    padding: 15.5px 45.5px;
+
+    border: 1px solid var(--neutral-grey-950);
+    border-radius: 10px;
+    background-color: var(--neutral-grey-950);
+
+    color: var(--neutral-white);
+}
+
+.task-dashboard-link:hover {
+    color: var(--brand-dark-orange);
+    border-color: var(--brand-dark-orange);
+    background-color: var(--neutral-white);
+}
