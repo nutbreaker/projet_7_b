@@ -1,0 +1,37 @@
+.tag {
+    width: fit-content;
+
+    padding: 4px 16px;
+
+    border-radius: 999px;
+}
+
+.tag-success {
+    color: var(--system-success-green);
+    background-color: var(--system-succes-green-light);
+}
+
+.tag-error {
+    color: var(--system-error-red);
+    background-color: var(--system-error-red-light);
+}
+
+.tag-warning {
+    color: var(--system-warning-orange);
+    background-color: var(--system-warning-orange-light);
+}
+
+.tag-info {
+    color: var(--system-info-blue);
+    background-color: var(--system-info-blue-light);
+}
+
+.tag-light {
+    color: var(--brand-dark-orange);
+    background-color: var(--brand-light-orange);
+}
+
+.tag-grey {
+    color: var(--neutral-grey-600);
+    background-color: var(--neutral-grey-200);
+}
