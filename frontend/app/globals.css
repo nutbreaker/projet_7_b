@@ -22,8 +22,6 @@
   --system-info-blue: #3b82f6;
   --brand-light-orange: #ffe8d9;
   --brand-dark-orange: #d3590b;
-  --neutral-grey-200: #e5e7eb;
-  --neutral-grey-600: #6b7280;
 
   /* TYPOGRAPHY */
   --font-manrope: 'Manrope', sans-serif;
@@ -39,6 +37,11 @@
   --font-weight-400: 400;
   --font-weight-600: 600;
 }
+
+/*
+Maybe create a variable to add and harmonize button over trasition effect
+transition: all .25s ease;
+*/
 
 *,
 ::before,
