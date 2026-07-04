@@ -1,0 +1,33 @@
+.task-add-comment {
+    display: flex;
+    gap: 14px;
+
+    textarea {
+        flex-grow: 1;
+        height: 83px;
+
+        padding: 18px 14px;
+
+        border-radius: 10px;
+        border: none;
+        background-color: var(--neutral-grey-50);
+
+        resize: none;
+    }
+}
+
+.task-add-comment-initials {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    
+    width: 27px;
+    height: 27px;
+    
+    padding: 10px 6px;
+
+    font-size: var(--font-size-2xs);
+    color: var(--neutral-grey-950);
+    
+    border: 1px solid var(--neutral-white);
+}
