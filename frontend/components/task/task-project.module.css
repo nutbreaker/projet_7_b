@@ -1,0 +1,179 @@
+.task-project {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    padding: 25px 40px;
+
+    background-color: var(--neutral-white);
+    border: solid 1px var(--neutral-grey-200);
+    border-radius: 10px;
+
+    hr {
+        width: 100%;
+        border: solid 1px var(--neutral-grey-200);
+    }
+}
+
+.task-project-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    h5,
+    p {
+        margin: 0;
+    }
+
+    h5 {
+        display: flex;
+        gap: 7px;
+    }
+}
+
+.task-project-menu-container {
+    position: absolute;
+    right: 0;
+}
+
+.task-project-menu-button {
+    /* 
+    https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/anchor
+    https://css-tricks.com/css-anchor-positioning-guide/
+    https://web.dev/learn/css/anchor-positioning
+    */
+    anchor-name: --task-project-menu-button;
+    width: 57px;
+    height: 57px;
+
+    cursor: pointer;
+
+    border-radius: 10px;
+    border: solid 1px var(--neutral-grey-200);
+    background-color: var(--neutral-white);
+}
+
+.task-project-menu-button::before {
+    content: url('assets/menu.svg');
+}
+
+.task-project-menu-button:hover {
+    border-color: var(--brand-dark-orange);
+}
+
+.task-project-menu-button:hover::before {
+    content: url('assets/menu-hover.svg');
+}
+
+.task-project-menu-nav {
+    position: relative;
+    position-anchor: --task-project-menu-button;
+
+    margin: 5px 0 0 0;
+    padding: 25px 20px;
+    inset: auto;
+    right: anchor(right);
+
+    border: solid 1px var(--neutral-grey-200);
+    background-color: var(--neutral-white);
+    border-radius: 10px;
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+
+        list-style: none;
+    }
+}
+
+.task-project-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    p {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+
+        margin: 0;
+    }
+}
+
+.task-project-due-date {
+    display: flex;
+    gap: 8px;
+}
+
+.task-project-due-date::before {
+    content: url('assets/calendar-dark.svg');
+}
+
+.task-project-assignees {
+    align-items: center;
+}
+
+.task-project-assignee {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 4px;
+
+    margin-right: 8px;
+}
+
+.task-project-assignee-initials {
+    display: flex;
+    place-content: center;
+    place-items: center;
+
+    width: 27px;
+    height: 27px;
+
+    padding: 10px 6px;
+
+    font-size: var(--font-size-2xs);
+    color: var(--neutral-grey-950);
+}
+
+/* https://stackoverflow.com/a/56758842 */
+.task-project-comments {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    font-size: 14px;
+}
+
+.task-project-comments>summary {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.task-project-comments summary::-webkit-details-marker {
+    display: none
+}
+
+.task-project-comments summary::after {
+    content: url('assets/arrow-up.svg');
+}
+
+.task-project-comments[open] summary:after {
+    content: url('assets/arrow-down.svg');
+}
+
+.task-project-comments-container,
+.task-project-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.task-project-form-button {
+    margin-left: auto;
+    padding-inline: 74px;
+}
