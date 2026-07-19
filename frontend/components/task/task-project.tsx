@@ -2,18 +2,19 @@
 
 import Form from 'next/form';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 import Tag from '@/components/tag/tag';
 import Comment from '@/components/comment/comment';
 import AddComment from '@/components/comment/add-comment';
 import Button from '@/components/buttons/button';
-import type { TaskProps } from './task.type';
 import { dateFormatter } from '@/utils/date-formatter';
 import { nameFormatter } from '@/utils/name.formatter';
 
-import styles from './task-project.module.css';
-import { useState } from 'react';
+import type { Task } from '@/types/api.types';
 
-export default function TaskProject({ id, userName, title, description, status, comments, assignees, dueDate }: TaskProps) {
+import styles from './task-project.module.css';
+
+export default function TaskProject({ userName, title, description, status, comments, assignees, dueDate, editable = true, className = '' }: Task & { userName: string, editable: boolean, className: string }) {
     const pathname = usePathname();
     const formattedDate = dateFormatter(dueDate);
     const commentsCount = comments.length;
@@ -24,15 +25,15 @@ export default function TaskProject({ id, userName, title, description, status, 
     };
     const assigneesEls = assignees.map((assignee, index) => (
         <span className={styles['task-project-assignee']} key={index}>
-            <Tag type='grey' className={styles['task-project-assignee-initials']}>{nameFormatter(assignee.name)}</Tag>
-            <Tag type='grey'>{assignee.name}</Tag>
+            <Tag type='grey' className={styles['task-project-assignee-initials']}>{nameFormatter(assignee.user.name)}</Tag>
+            <Tag type='grey'>{assignee.user.name}</Tag>
         </span>
     ));
     const [isTextareaEmpty, setIsTextareaEmpty] = useState(true);
     const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => setIsTextareaEmpty(e.target.value.trim().length === 0);
 
     return (
-        <article className={styles['task-project']}>
+        <article className={`${styles['task-project']} ${className}`}>
             <div className={styles['task-project-header']}>
                 <h5 className={`headings-h5-neutral-grey-800`}>
                     {title}
@@ -43,7 +44,7 @@ export default function TaskProject({ id, userName, title, description, status, 
                 </h5>
                 <p className={`body-s-neutral-grey-600`}>{description}</p>
 
-                <div className={styles['task-project-menu-container']}>
+                {editable && <div className={styles['task-project-menu-container']}>
                     <button popoverTarget='settings' className={styles['task-project-menu-button']} aria-label="menu"></button>
                     <nav popover='' id='settings' className={styles['task-project-menu-nav']}>
                         <ul>
@@ -52,6 +53,7 @@ export default function TaskProject({ id, userName, title, description, status, 
                         </ul>
                     </nav>
                 </div>
+                }
             </div>
 
             <div className={styles['task-project-content']}>

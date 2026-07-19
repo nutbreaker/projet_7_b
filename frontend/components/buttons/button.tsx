@@ -5,6 +5,7 @@ type ButtonProps = {
     disabled?: boolean;
     children: React.ReactNode;
     isPending?: boolean;
+    onClickHandler?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 export default function Button({
@@ -12,11 +13,12 @@ export default function Button({
     disabled = false,
     children,
     isPending = false,
+    onClickHandler
 }: ButtonProps) {
 
     return (
         <button
             className={`body-m-neutral-white ${styles.button} ${isPending && styles['button-waiting']} ${className}`}
-            disabled={disabled}>{children}</button>
+            disabled={disabled} onClick={onClickHandler}>{children}</button>
     );
 }

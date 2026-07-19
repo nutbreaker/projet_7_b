@@ -1,0 +1,16 @@
+.modal-create-project {
+    h4 {
+        margin: 0 0 40px 0;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    button {
+        margin-top: 32px;
+        width: max-content;
+    }
+}

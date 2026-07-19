@@ -72,6 +72,11 @@ export type User = {
     createdAt: string,
     updatedAt: string,
 };
+export type Users = {
+    data: {
+        users: User[]
+    }
+};
 
 export type CommentAuthor = {
     id: string,
@@ -106,6 +111,8 @@ export type Task = {
 
     priority: TaskPriority,
     dueDate: string,
+
+    project: Project,
 
     projectId: string,
     creatorId: string,

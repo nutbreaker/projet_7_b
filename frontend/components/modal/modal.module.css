@@ -1,0 +1,36 @@
+.modal {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 100%;
+    max-width: 598px;
+
+    padding: 37px 73px 79px;
+
+    border: none;
+    border-radius: 10px;
+    background-color: var(--neutral-white);
+}
+
+.modal[open] {
+    display: flex;
+}
+
+.modal::backdrop {
+    background-color: var(--neutral-grey-100);
+    opacity: .7;
+}
+
+.modal-close-button {
+    margin-left: auto;
+
+    border: none;
+    background-color: transparent;
+
+    cursor: pointer;
+}
+
+.modal-close-button::before {
+    content: url('assets/cross.svg');
+}

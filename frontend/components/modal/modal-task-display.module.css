@@ -1,0 +1,12 @@
+.modal-task-display {}
+
+.modal-task-content {
+    padding: 25px 0 0 0;
+
+    border: none;
+
+    h5 {
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}

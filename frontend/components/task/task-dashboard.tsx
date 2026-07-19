@@ -1,23 +1,27 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import Tag from '@/components/tag/tag';
-import type { TaskProps } from './task.type';
 import { dateFormatter } from '@/utils/date-formatter';
+
+import type { Task } from '@/types/api.types';
 
 import styles from './task-dashboard.module.css';
 
-export default function TaskDashboard({ id, title, description, status, dueDate, project, comments }: TaskProps) {
+
+export default function TaskDashboard({ id, title, description, status, dueDate, project, comments }: Task) {
 
     const pathname = usePathname();
+    const params = useSearchParams()
     const { name: projectName } = project;
     const formattedDate = dateFormatter(dueDate);
     const commentsCount = comments.length;
     const statusValues = {
         'TODO': { type: 'error' as const, label: 'A faire' },
         'IN_PROGRESS': { type: 'warning' as const, label: 'En cours' },
-        'DONE': { type: 'success' as const, label: 'Terminée' }
+        'DONE': { type: 'success' as const, label: 'Terminée' },
+        'CANCELLED': { type: 'grey' as const, label: 'Annulée' }
     };
 
     return (
@@ -39,7 +43,15 @@ export default function TaskDashboard({ id, title, description, status, dueDate,
                     <li><span className={styles['task-dashboard-comments']}>{commentsCount}</span></li>
                 </ul>
 
-                <Link className={styles['task-dashboard-link']} href={`${pathname}/${id}`}>Voir</Link>
+                <Link className={styles['task-dashboard-link']}
+                    href={{
+                        pathname: pathname,
+                        query: {
+                            ...Object.fromEntries(params.entries()),
+                            taskid: id
+                        },
+                    }}
+                >Voir</Link>
             </div>
         </article>
     );
