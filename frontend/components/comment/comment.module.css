@@ -7,15 +7,15 @@
     display: flex;
     place-content: center;
     place-items: center;
-    
+
     width: 27px;
     height: 27px;
-    
+
     padding: 10px 6px;
 
     font-size: var(--font-size-2xs);
     color: var(--neutral-grey-950);
-    
+
     border: 1px solid var(--neutral-white);
 }
 
@@ -37,6 +37,8 @@
     }
 
     p {
+        flex: 100%;
+
         margin: 0;
     }
 }
