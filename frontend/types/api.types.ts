@@ -45,6 +45,8 @@ export type Project = {
     updatedAt: string,
 };
 
+export type ProjectWithTasks = Project & { tasks: Task[] };
+
 export type Projects = {
     projects: Project[]
 };

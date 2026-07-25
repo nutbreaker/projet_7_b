@@ -2,29 +2,22 @@ import Tag from '@/components/tag/tag';
 import { nameFormatter } from '@/utils/name.formatter';
 
 import styles from './card-project.module.css';
+import type { ProjectWithTasks } from '@/types/api.types';
 
-type CardProjectProps = {
-    title: string,
-    description: string,
-    owner: { name: string },
-    members: [{ name: string }],
-    tasks: [{ status: string }]
-}
-
-export default function CardProject({ title, description, owner, members, tasks }: CardProjectProps) {
+export default function CardProject({ name, description, owner, members, tasks }: ProjectWithTasks) {
     const teamCount = members.length + 1;
     const tasksCount = tasks.length;
     const tasksDoneCount = tasks.filter(task => task.status === 'DONE').length;
     const progression = (tasksCount && `${(tasksDoneCount / tasksCount * 100) | 0}%`) || 0;
     const ownerInitials = nameFormatter(owner.name);
-    const membersInitials = members.map(member => nameFormatter(member.name));
+    const membersInitials = members.map(member => nameFormatter(member.user.name));
 
     console.log(styles['card-project-project-member']);
 
     return (
         <article className={styles['card-project']}>
             <div className={styles['card-project-header']}>
-                <h5 className={`headings-h5-neutral-grey-800`}>{title}</h5>
+                <h5 className={`headings-h5-neutral-grey-800`}>{name}</h5>
                 <p className={`body-s-neutral-grey-600`}>{description}</p>
             </div>
 

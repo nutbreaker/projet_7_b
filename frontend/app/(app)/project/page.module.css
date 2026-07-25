@@ -1,0 +1,28 @@
+.project-header {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+
+    margin-block: 89px 60px;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    h2,
+    p {
+        margin: 0;
+    }
+}
+
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 18px 14px;
+    margin-bottom: 40px;
+}
