@@ -1,0 +1,60 @@
+.modal-create-task {
+    h4 {
+        margin-block: 0 40px;
+    }
+}
+
+
+.modal-create-task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.modal-form-status-radio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 9px;
+
+    border: none;
+    padding: 0;
+    margin: 0;
+
+    legend {
+        margin-bottom: 16px;
+        width: 100%;
+    }
+
+    label {
+        cursor: pointer;
+
+        span {
+            position: relative;
+
+            border: solid 1px transparent;
+        }
+    }
+
+    input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+
+
+        &:checked~* {
+            border-color: currentColor;
+        }
+
+        &:focus-visible~* {
+            outline: 1px solid currentColor;
+            /* outline-offset: 2px;
+            border-radius: 4px; */
+        }
+    }
+}
+
+.modal-create-task-send-button {
+    width: fit-content;
+
+    margin-top: 56px;
+    padding: 16px;
+}

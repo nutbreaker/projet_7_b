@@ -1,49 +1,44 @@
 import { useState } from 'react';
 import styles from './select.module.css';
+import { TaskAssignee, TaskAssigneeIds } from '@/types/api.types';
 
 // https://stackoverflow.com/questions/14218307/select-arrow-style-change
 
-export default function Select(
-    { label, name, className = '', defaultValue = [], optionsFetcher } : {
+export default function SelectAssignee(
+    { label, name, className = '', defaultValue = [], members }: {
         label: string,
         name: string,
         className?: string,
-        defaultValue?: []
-        optionsFectech: []
+        defaultValue?: TaskAssigneeIds
+        members: Any[]
     }
 ) {
     const [userSearchquery, setUserSearchQuery] = useState('');
-    const [options, setOptions] = useState([]);
+    const [options, setOptions] = useState(members);
     const [selectedOptions, setSelectedOptions] = useState(defaultValue);
-    const displayOptions = [
-        ...options,
-        ...selectedOptions.filter(selectedOption => !options.find(option => option.email === selectedOption.email)),
-    ];
+    const displayOptions = [...options];
 
     const handleInputChange = async (e) => {
         const value = e.target.value;
 
         setUserSearchQuery(value);
 
-        if (value.length < 2) return setOptions([]);
-
-        setOptions(await optionsFetcher(value));
+        setOptions(members.filter(assigne => (assigne.user.email.toLowerCase().includes(value), assigne.user.name.toLowerCase().includes(value))));
     };
 
     const handleSelectChange = (e) => {
         const selectedOptions = Array.from(e.target.selectedOptions);
         const newSelected = selectedOptions.map(selectedOption =>
-            displayOptions.find(option => option.email === selectedOption.value)
+            displayOptions.find(option => option.userId === selectedOption.value)
         );
 
         setSelectedOptions(newSelected);
-    };  
+    };
 
     const handleLabelBlur = (e) => {
         if (e.currentTarget.contains(e.relatedTarget)) return;
 
         setUserSearchQuery("");
-        setOptions([]);
     };
 
     const getPlaceholderText = () => {
@@ -66,18 +61,17 @@ export default function Select(
                 onChange={handleInputChange}
                 placeholder={getPlaceholderText()}
             />
-
             <select
                 name={name}
                 className={styles['select']}
                 multiple
                 size={Math.min(displayOptions.length, 5) || 1}
                 onChange={handleSelectChange}
-                value={selectedOptions.map(selectedOption => selectedOption.email)}
+                value={selectedOptions.map(selectedOption => selectedOption.userId)}
             >
                 {displayOptions.map(option => (
-                    <option key={option.email} value={option.email}>
-                        {option.name}
+                    <option key={option.userId} value={option.userId}>
+                        {option.user.name}
                     </option>
                 ))}
             </select>

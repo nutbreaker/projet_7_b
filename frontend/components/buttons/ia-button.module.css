@@ -1,0 +1,16 @@
+.ia-button {
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 50%;
+    background-color: var(--brand-dark-orange);
+    background-image: url("assets/start-white.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.ia-button:hover {
+    background-color: var(--brand-light-orange);
+    background-image: url("assets/start-brand-color.svg");
+}

@@ -1,0 +1,12 @@
+.project-task-button {
+    padding: 0;
+
+    color: var(--black);
+    font-family: var(--font-inter);
+    font-weight: 400;
+    font-size: var(--font-size-l);
+
+    border: unset;
+    border-radius: unset;
+    background: unset;
+}

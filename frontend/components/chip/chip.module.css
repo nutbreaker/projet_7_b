@@ -19,9 +19,17 @@
 }
 
 .chip-kanban:before {
-    content: url("assets/kanban.svg");
+    content: url("assets/calendar.svg");
+}
+
+.chip-calendar:before {
+    content: url("assets/calendar.svg");
 }
 
 .chip-projects:before {
     content: url("assets/projects.svg");
+}
+
+.chip-active {
+    background-color: var(--brand-light-orange);
 }

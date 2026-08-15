@@ -1,8 +1,8 @@
 'use client';
 
 import Form from 'next/form';
-import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useActionState, useState } from 'react';
 import Tag from '@/components/tag/tag';
 import Comment from '@/components/comment/comment';
 import AddComment from '@/components/comment/add-comment';
@@ -10,20 +10,25 @@ import Button from '@/components/buttons/button';
 import { dateFormatter } from '@/utils/date-formatter';
 import { nameFormatter } from '@/utils/name.formatter';
 
-import type { Task } from '@/types/api.types';
+import type { Project, Task } from '@/types/api.types';
 
 import styles from './task-project.module.css';
+import OpenModalProjectTaskButton from '../buttons/open-modal-project-task-button';
+import ModalUpdateTask from '../modal/modal-update-task';
+import ModalDeleteProjectTask from '../modal/modal-delete-project-task';
+import { handleAddComment, handleDeleteProjectTask, handleUpdateProjectTask } from '@/app/(app)/project/actions';
 
-export default function TaskProject({ userName, title, description, status, comments, assignees, dueDate, editable = true, className = '' }: Task & { userName: string, editable: boolean, className: string }) {
+export default function TaskProject({ userName, project, task, editable = true, className = '' }: { userName: string, project: Project, task: Task, editable?: boolean, className?: string }) {
     const pathname = usePathname();
-    const formattedDate = dateFormatter(dueDate);
-    const commentsCount = comments.length;
+    const searchParams = useSearchParams();
+    const formattedDate = dateFormatter(task.dueDate);
+    const commentsCount = task.comments.length;
     const statusValues = {
         'TODO': { type: 'error' as const, label: 'A faire' },
         'IN_PROGRESS': { type: 'warning' as const, label: 'En cours' },
         'DONE': { type: 'success' as const, label: 'Terminée' }
     };
-    const assigneesEls = assignees.map((assignee, index) => (
+    const assigneesEls = task.assignees.map((assignee, index) => (
         <span className={styles['task-project-assignee']} key={index}>
             <Tag type='grey' className={styles['task-project-assignee-initials']}>{nameFormatter(assignee.user.name)}</Tag>
             <Tag type='grey'>{assignee.user.name}</Tag>
@@ -31,27 +36,38 @@ export default function TaskProject({ userName, title, description, status, comm
     ));
     const [isTextareaEmpty, setIsTextareaEmpty] = useState(true);
     const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => setIsTextareaEmpty(e.target.value.trim().length === 0);
+    const editModalId = `edit-modal-${task.id}`;
+    const deleteModalId = `delete-modal-${task.id}`;
+
+    const [addCommentState, addCommentAction] = useActionState(handleAddComment, { error: '', fields: {}, details: [] });
+      const fullUrl = searchParams.toString() 
+    ? `${pathname}?${searchParams.toString()}`
+    : pathname;
+
 
     return (
         <article className={`${styles['task-project']} ${className}`}>
             <div className={styles['task-project-header']}>
                 <h5 className={`headings-h5-neutral-grey-800`}>
-                    {title}
+                    {task.title}
                     <Tag
                         className={styles['task-project-header-tag']}
-                        type={statusValues[status].type}
-                    >{statusValues[status].label}</Tag>
+                        type={statusValues[task.status].type}
+                    >{statusValues[task.status].label}</Tag>
                 </h5>
-                <p className={`body-s-neutral-grey-600`}>{description}</p>
+                <p className={`body-s-neutral-grey-600`}>{task.description}</p>
 
                 {editable && <div className={styles['task-project-menu-container']}>
-                    <button popoverTarget='settings' className={styles['task-project-menu-button']} aria-label="menu"></button>
-                    <nav popover='' id='settings' className={styles['task-project-menu-nav']}>
+                    <button popoverTarget={`settings-${task.id}`} className={styles['task-project-menu-button']} aria-label="menu"></button>
+                    <nav popover='' id={`settings-${task.id}`} className={styles['task-project-menu-nav']}>
                         <ul>
-                            <li>Editer</li>
-                            <li>Supprimer</li>
+                            <li><OpenModalProjectTaskButton modalId={editModalId} label={'Editer'} /></li>
+                            <li><OpenModalProjectTaskButton modalId={deleteModalId} label={'Supprimer'} /></li>
                         </ul>
                     </nav>
+
+                    <ModalUpdateTask id={editModalId} project={project} task={task} formAction={handleUpdateProjectTask} />
+                    <ModalDeleteProjectTask id={deleteModalId} task={task} formAction={handleDeleteProjectTask} />
                 </div>
                 }
             </div>
@@ -67,10 +83,26 @@ export default function TaskProject({ userName, title, description, status, comm
                 <details className={styles['task-project-comments']}>
                     <summary>Commentaire ({commentsCount})</summary>
                     <div className={styles['task-project-comments-container']}>
-                        {comments.map((comment, index) => <Comment key={index} authorName={comment.author.name} createdAt={comment.createdAt} content={comment.content} />)}
+                        {task.comments.map((comment, index) => <Comment key={index} authorName={comment.author.name} createdAt={comment.createdAt} content={comment.content} />)}
 
-                        <Form className={styles['task-project-form']} action={pathname}>
-                            <AddComment onChange={handleTextChange} authorName={userName} />
+                        <Form className={styles['task-project-form']} action={addCommentAction}>
+                            <AddComment
+                                onChange={handleTextChange}
+                                redirectUrl={fullUrl}
+                                projectId={task.projectId}
+                                taskId={task.id} authorName={userName} />
+
+
+                            {
+                                addCommentState.error &&
+                                <span className={`${styles['error-message']} body-s-system-error-red`}>{addCommentState.error}</span>
+                            }
+
+                            {
+                                addCommentState.error && addCommentState.details.length &&
+                                <ul>{addCommentState.details.map(({ message }, i) => <li key={i} className={`${styles['error-message']} body-s-system-error-red`}>{message}</li>)}</ul>
+                            }
+
                             <Button className={styles['task-project-form-button']} isPending={false} disabled={isTextareaEmpty}>Envoyer</Button>
                         </Form>
                     </div>

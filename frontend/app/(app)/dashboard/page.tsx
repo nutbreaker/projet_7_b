@@ -8,7 +8,7 @@ import ModalCreateProject from '@/components/modal/modal-create-project';
 import CreateProjectButton from '@/components/buttons/create-project-button';
 import { handleCreateProject } from '@/app/(app)/action';
 import Tag from '@/components/tag/tag';
-import TaskSearch from './task-search';
+import TaskSearch from '../task-search';
 import ModalTaskDisplay from '@/components/modal/modal-task-display';
 
 import type { Task } from '@/types/api.types';

@@ -1,0 +1,46 @@
+.modal-create-task-ia {
+    h4 {
+        margin-block: 0 40px;
+
+        background-image: url("assets/start-brand-color.svg");
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 21px;
+        padding-left: 29px;
+    }
+}
+
+
+.modal-create-task-content {
+    height: 400px;
+
+    overflow-y: auto;
+}
+
+.modal-create-task-ia-form {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    height: 60px;
+    padding: 18px 32px;
+
+    background: var(--neutral-grey-50);
+    border-radius: 999px;
+
+    &:has(input[type="text"]:focus) {
+        outline: solid 1px var(--brand-dark-orange);
+    }
+}
+
+.modal-create-task-ia-input {
+    flex-grow: 1;
+
+    input[type="text"] {
+        padding: 0;
+        color: var(--black);
+        background: transparent;
+        border: none;
+        outline: none;
+    }
+}

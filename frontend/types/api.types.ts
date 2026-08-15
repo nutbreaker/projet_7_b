@@ -53,6 +53,7 @@ export type Projects = {
 
 export type TaskStatus = "TODO" | "IN_PROGRESS" | "DONE" | "CANCELLED";
 export type TaskPriority = "LOW" | "MEDIUM" | "HIGH" | "URGENT";
+export type TaskAssigneeIds = string[];
 
 export type TaskAssignee = {
     id: string,
@@ -129,3 +130,12 @@ export type Task = {
 export type Tasks = {
     tasks: Task[]
 };
+
+export type PostTask = {
+    projectId: string,
+    title: string,
+    description: string,
+    dueDate: string,
+    status: TaskStatus,
+    assigneeIds: TaskAssigneeIds
+}

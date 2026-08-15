@@ -101,7 +101,8 @@ a {
 }
 
 /* TEXT */
-.body-l-black {
+.body-l-black,
+.body-l-grey-600 {
   font-family: var(--font-inter);
   font-weight: 400;
   font-size: var(--font-size-l);
@@ -119,6 +120,10 @@ a {
 
 .body-m-black {
   color: var(--black);
+}
+
+.body-l-grey-600 {
+  color: var(--neutral-grey-600);
 }
 
 .body-m-neutral-white {

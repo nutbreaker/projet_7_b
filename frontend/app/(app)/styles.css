@@ -15,3 +15,16 @@ main>div {
         padding-inline: 10px;
     }
 }
+
+.search {
+    max-width: 357px;
+    width: 100%;
+
+    input {
+        padding: 23px 52px 23px 32px;
+
+        font-size: var(--font-size-s);
+        background: var(--neutral-white) url("assets/magnifier.svg") center no-repeat;
+        background-position-x: right 32px;
+    }
+}

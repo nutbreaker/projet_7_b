@@ -2,7 +2,7 @@
 
 import Button from "./button";
 
-export default function CreateProjectButton({ modalId }: { modalId: string }) {
+export default function OpenModaltButton({ className, label, modalId }: { className ?: string, label: string, modalId: string }) {
     const open = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
@@ -11,5 +11,5 @@ export default function CreateProjectButton({ modalId }: { modalId: string }) {
         createProjectModal?.showModal();
     };
 
-    return <Button onClickHandler={open}>+ Créer un projet</Button>
+    return <Button className={className} onClickHandler={open}>{label}</Button>
 }

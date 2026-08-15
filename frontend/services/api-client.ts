@@ -3,7 +3,7 @@ import type { Success, ErrorResponse } from "@/types/api.types";
 
 type Options = {
     headers?: object,
-    method: 'GET' | 'POST',
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE',
     body?: string,
     token: string
 }

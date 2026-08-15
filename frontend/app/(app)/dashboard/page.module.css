@@ -53,19 +53,6 @@
     }
 }
 
-.search {
-    max-width: 357px;
-    width: 100%;
-
-    input {
-        padding: 23px 52px 23px 32px;
-
-        font-size: var(--font-size-s);
-        background: transparent url("assets/magnifier.svg") center no-repeat;
-        background-position-x: right 32px;
-    }
-}
-
 .dashboard-tasks-content {
     display: flex;
     flex-direction: column;
@@ -86,6 +73,16 @@
 @media (min-width: 1301px) {
     .dashboard-kanban-container {
         grid-template-columns: repeat(3, minmax(0, 419px));
+    }
+}
+
+@media (max-width: 1024px) {
+    .dashboard-tasks-container {
+        padding: 30px 25px;
+
+        .task-dashboard {
+            background:pink;
+        }
     }
 }
 

@@ -30,7 +30,8 @@ export default function ModalTaskDisplay({ id, userName, task }: { id: string, u
     return (
         <Modal id={id} className={styles['modal-task-display']} onClose={modalCloseHander}>
             <TaskProject
-                {...task}
+                // {...task}
+                task={task}
                 userName={userName}
                 className={styles['modal-task-content']}
                 editable={false}
