@@ -8,12 +8,7 @@ main>div {
     max-width: 1440px;
     margin: auto;
     padding-inline: 100px;
-}
-
-@media (max-width: 1024px) {
-    main>div {
-        padding-inline: 10px;
-    }
+    margin-bottom: 40px;
 }
 
 .search {
@@ -26,5 +21,15 @@ main>div {
         font-size: var(--font-size-s);
         background: var(--neutral-white) url("assets/magnifier.svg") center no-repeat;
         background-position-x: right 32px;
+    }
+}
+
+@media (max-width: 1024px) {
+    main>div {
+        padding-inline: 10px;
+    }
+
+    .search {
+        max-width: unset;
     }
 }
