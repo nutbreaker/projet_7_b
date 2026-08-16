@@ -96,6 +96,7 @@
         display: flex;
         gap: 14px;
         align-items: center;
+        flex-wrap: wrap;
     }
 }
 
@@ -108,6 +109,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: 10px;
 
     width: 100%;
 
@@ -212,5 +214,38 @@
 
     &:open {
         /* background-image: url("../../assets/arrow-up.svg"); */
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .project-back-button,
+    .project-header,
+    .project-tasks-container {
+        margin-left: 0;
+    }
+
+    .project-tasks-container {
+        grid-column: 1/3;
+    }
+
+    .project-tasks-header-options {
+        display: flex;
+        flex-grow: 1;
+        flex-wrap: wrap;
+    }
+
+    .project-tasks-content {
+        padding-inline: 0;
+    }
+}
+
+@media (max-width: 780px) {
+    .project-contributors {
+        padding-inline: 20px;
+    }
+
+    .project-tasks-container {
+        padding: 30px 20px;
     }
 }
