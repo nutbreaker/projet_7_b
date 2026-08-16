@@ -10,11 +10,28 @@
     background-color: var(--neutral-white);
 }
 
-.menu-link:hover, .menu-link-active {
+.menu-link:hover,
+.menu-link-active {
     background-color: var(--neutral-grey-950);
     color: var(--neutral-white);
 
     img {
         filter: brightness(0) invert(1);
+    }
+}
+
+@media (max-width: 1024px) {
+    .menu-link {
+        width: fit-content;
+        height: fit-content;
+        padding: 20px;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .menu-link {
+        padding-inline: 10px;
     }
 }
