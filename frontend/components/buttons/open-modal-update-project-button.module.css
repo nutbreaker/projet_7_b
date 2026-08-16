@@ -1,4 +1,5 @@
 .update-project-button {
+    width: fit-content;
     padding: 0;
 
     text-decoration: underline;
