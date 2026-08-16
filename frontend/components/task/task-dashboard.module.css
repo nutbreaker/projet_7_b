@@ -19,13 +19,16 @@
     p {
         margin: 0;
     }
+
+    h5 {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 7px;
+    }
 }
 
-.task-dashboard-header-tag {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
+.task-dashboard-header-tag {}
 
 .task-dashboard-footer {
     display: flex;
@@ -84,4 +87,36 @@
     color: var(--brand-dark-orange);
     border-color: var(--brand-dark-orange);
     background-color: var(--neutral-white);
+}
+
+@media (max-width: 1024px) {
+    .task-dashboard {
+        padding: 20px;
+    }
+
+    .task-dashboard-footer {
+        ul {
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+    }
+
+    .task-dashboard-separator {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .task-dashboard-link {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .task-dashboard-header {
+        h5 {
+            flex-direction: column;
+        }
+    }
 }
