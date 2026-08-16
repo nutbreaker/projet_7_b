@@ -14,3 +14,11 @@
         width: max-content;
     }
 }
+
+@media (max-width: 1024px) {
+    .modal-create-project {
+        button {
+            margin-top: 0;
+        }
+    }
+}
