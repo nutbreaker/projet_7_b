@@ -1,13 +1,27 @@
 .container {
     display: flex;
+    flex-wrap: wrap;
     place-items: center;
     max-width: 1440px;
     height: 94px;
-    margin:auto;
-    padding-inline: 100px;;
+    margin: auto;
+    padding-inline: 100px;
     background-color: var(--neutral-white);
 }
 
 .menu {
     flex-grow: 1;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        height: fit-content;
+        padding-inline: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding-inline: 10px;
+    }
 }
