@@ -40,9 +40,9 @@ export default function TaskProject({ userName, project, task, editable = true, 
     const deleteModalId = `delete-modal-${task.id}`;
 
     const [addCommentState, addCommentAction] = useActionState(handleAddComment, { error: '', fields: {}, details: [] });
-      const fullUrl = searchParams.toString() 
-    ? `${pathname}?${searchParams.toString()}`
-    : pathname;
+    const fullUrl = searchParams.toString()
+        ? `${pathname}?${searchParams.toString()}`
+        : pathname;
 
 
     return (
@@ -54,22 +54,24 @@ export default function TaskProject({ userName, project, task, editable = true, 
                         className={styles['task-project-header-tag']}
                         type={statusValues[task.status].type}
                     >{statusValues[task.status].label}</Tag>
+
+                    {editable && <div className={styles['task-project-menu-container']}>
+                        <button popoverTarget={`settings-${task.id}`} className={styles['task-project-menu-button']} aria-label="menu"></button>
+                        <nav popover='' id={`settings-${task.id}`} className={styles['task-project-menu-nav']}>
+                            <ul>
+                                <li><OpenModalProjectTaskButton modalId={editModalId} label={'Editer'} /></li>
+                                <li><OpenModalProjectTaskButton modalId={deleteModalId} label={'Supprimer'} /></li>
+                            </ul>
+                        </nav>
+
+                        <ModalUpdateTask id={editModalId} project={project} task={task} formAction={handleUpdateProjectTask} />
+                        <ModalDeleteProjectTask id={deleteModalId} task={task} formAction={handleDeleteProjectTask} />
+                    </div>
+                    }
                 </h5>
                 <p className={`body-s-neutral-grey-600`}>{task.description}</p>
 
-                {editable && <div className={styles['task-project-menu-container']}>
-                    <button popoverTarget={`settings-${task.id}`} className={styles['task-project-menu-button']} aria-label="menu"></button>
-                    <nav popover='' id={`settings-${task.id}`} className={styles['task-project-menu-nav']}>
-                        <ul>
-                            <li><OpenModalProjectTaskButton modalId={editModalId} label={'Editer'} /></li>
-                            <li><OpenModalProjectTaskButton modalId={deleteModalId} label={'Supprimer'} /></li>
-                        </ul>
-                    </nav>
 
-                    <ModalUpdateTask id={editModalId} project={project} task={task} formAction={handleUpdateProjectTask} />
-                    <ModalDeleteProjectTask id={deleteModalId} task={task} formAction={handleDeleteProjectTask} />
-                </div>
-                }
             </div>
 
             <div className={styles['task-project-content']}>

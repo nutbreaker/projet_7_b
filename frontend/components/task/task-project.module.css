@@ -177,3 +177,22 @@
     margin-left: auto;
     padding-inline: 74px;
 }
+
+@media (max-width: 1024px) {
+    .task-project-menu-nav button{
+        width: fit-content;
+    }
+}
+
+@media (max-width: 780px) {
+    .task-project-header {
+        h5 {
+            flex-wrap: wrap;
+        }
+    }
+
+    .task-project-menu-container {
+        position: unset;
+        margin-left: auto;
+    }
+}
