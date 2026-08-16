@@ -102,6 +102,8 @@ export default async function Dashboard(
                 {...task}
               />
             ))}
+
+            {!taskSearch.length && <p className={'body-m-neutral-grey-600'} style={{ textAlign: 'center' }}>Aucune tâche</p>}
           </div>
         </section>
       }
