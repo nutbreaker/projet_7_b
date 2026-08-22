@@ -6,22 +6,22 @@
   --black: #000;
   --neutral-grey-950: #0f0f0f;
   --neutral-grey-800: #1f1f1f;
-  --neutral-grey-600: #6b7280;
-  --neutral-grey-400: #9ca3af;
+  --neutral-grey-600: #464A53; /* The figma color, #6b7280, was not WCAG compliant */
+  --neutral-grey-400: #4F5763; /* The figma color, #9ca3af, was not WCAG compliant */
   --neutral-grey-200: #e5e7eb;
   --neutral-grey-100: #f3f4f6;
   --neutral-grey-50: #f9fafb;
   --neutral-white: #ffffff;
   --system-succes-green-light: #f1fff7;
-  --system-success-green: #27ae60;
+  --system-success-green: #135830; /* The figma color, #27ae60, was not WCAG compliant */
   --system-error-red-light: #ffe0e0;
-  --system-error-red: #ef4444;
+  --system-error-red: #920C0C; /* The figma color, #ef4444, was not WCAG compliant */
   --system-warning-orange-light: #fff0d7;
-  --system-warning-orange: #e08d00;
+  --system-warning-orange: #753006; /* The figma color, #e08d00, was not WCAG compliant */
   --system-info-blue-light: #e0ecff;
   --system-info-blue: #3b82f6;
   --brand-light-orange: #ffe8d9;
-  --brand-dark-orange: #d3590b;
+  --brand-dark-orange: #913C08; /* The figma color, #d3590b, was not WCAG compliant */
 
   /* TYPOGRAPHY */
   --font-manrope: 'Manrope', sans-serif;
