@@ -24,7 +24,7 @@ export default function ModalCreateTaskIA(
             >
                 <Input id='name' type='text' className={styles['modal-create-task-ia-input']} placeholder={'Décrivez les tâches que vous souhaitez ajouter...'} />
 
-                <AIButton />
+                <AIButton ariaLabel="Créer une tâche" />
             </Form>
         </Modal>
     );

@@ -22,6 +22,7 @@ export default function AddComment({ authorName, projectId, taskId, redirectUrl,
             <input type="hidden" name="redirect-url" value={redirectUrl} />
 
             <textarea
+                aria-label="Ajouter un commentaire"
                 id="comment-content"
                 onChange={onChange}
                 className={'body-2xs-black'}

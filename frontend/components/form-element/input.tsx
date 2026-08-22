@@ -17,7 +17,9 @@ export default function Input(
     { id, type, label = '', minLength, maxLength, defaultValue, placeholder = '', className = '', required = false, inputChangeHandler }: InputProps
 ) {
     return (
-        <label className={`body-s-black ${styles.label} ${className}`}>
+        // find a way to remove the aria-label where it's not needed
+        // where it's needed IA Modal and Task Search
+        <label aria-label={placeholder || label}  className={`body-s-black ${styles.label} ${className}`}>
             {label}
             <input
                 id={id}
