@@ -27,7 +27,7 @@ export default async function Dashboard(
   }
 
   const authProfileResp = await authProfile(token);
-  const userName = await authProfileResp.success && authProfileResp.data.user.name || '';
+  const userName = authProfileResp.success && authProfileResp.data.user.name || '';
   const dashboardAssignedTasksResp = await dashboardAssignedTasks(token);
   const tasks = dashboardAssignedTasksResp.success && dashboardAssignedTasksResp.data.tasks || [];
   const resolvedParams = await searchParams;

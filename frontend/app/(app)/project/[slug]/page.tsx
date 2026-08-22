@@ -48,7 +48,7 @@ export default async function Project({
   const searchQuery = (resolvedSearchParams.search as string || '').toLowerCase();
   const isSortByDueDate = Object.hasOwn(resolvedSearchParams, 'calendar');
   const taskStatus = (resolvedSearchParams.status as string || '');
-  const userName = await authProfileResp.success && authProfileResp.data.user.name || '';
+  const userName = authProfileResp.success && authProfileResp.data.user.name || '';
   const responseProjectById = await projectById(token, resolvedParams.slug);
   const responseProjectsIdTasks = await projectsIdTasks(token, resolvedParams.slug)
   const tasks = responseProjectsIdTasks.success && responseProjectsIdTasks.data.tasks || [];

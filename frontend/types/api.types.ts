@@ -80,6 +80,9 @@ export type Users = {
         users: User[]
     }
 };
+export type UserData = {
+        user: User
+};
 
 export type CommentAuthor = {
     id: string,
