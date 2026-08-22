@@ -42,3 +42,47 @@
         border-radius: 4px;
     }
 }
+
+.form-footer {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.signout-link {
+    padding: 15.5px 27.5px;
+
+    text-align: center;
+
+    background-color: var(--system-error-red);
+    border: 1px solid var(--system-error-red);
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    &:hover {
+        color: var(--system-error-red);
+        background-color: revert;
+        border-color: var(--system-error-red);
+    }
+}
+
+@media (max-width: 1024px) {
+    .update-profile-button {
+        width: revert;
+        flex: 1;
+    }
+
+    .signout-link {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 780px) {
+    .profile-form {
+        padding-inline: 20px;
+    }
+}

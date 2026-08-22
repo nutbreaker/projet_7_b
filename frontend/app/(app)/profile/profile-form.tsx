@@ -57,7 +57,8 @@ export function ProfileForm({ user }: ProfileFormProps) {
             <Error success={state?.success} message={state?.message} data={state?.data} />
 
             <div className={styles['form-footer']}>
-                <Button isPending={isPending} disabled={isPending}>Modifier les informations</Button>
+                <Button className={styles['update-profile-button']} isPending={isPending} disabled={isPending}>Modifier les informations</Button>
+                <a className={`body-m-neutral-white ${styles['signout-link']}`} href={'/signout'}>Se déconnecter</a>
             </div>
         </form>
     );

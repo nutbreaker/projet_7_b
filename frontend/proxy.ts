@@ -4,14 +4,10 @@ import decodeJWT from './utils/jwt-decoder';
 
 // https://nextjs.org/docs/pages/guides/authentication#optimistic-checks-with-proxy-optional
 
-const publicRoutes = ['/signin', '/signup', '/signout'];
+const publicRoutes = ['/signin', '/signup'];
 
 export default async function proxy(req: NextRequest) {
     const path = req.nextUrl.pathname;
-
-    if (path === '/signout') {
-        return NextResponse.next();
-    }
 
     const isPublicRoute = publicRoutes.includes(path);
     const cookie = await getSessionToken();
