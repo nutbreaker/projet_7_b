@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Menu from '@/components/header/menu';
@@ -17,10 +16,10 @@ export default async function Header() {
             <div className={styles.container}>
 
                 <h1>
-                    <Link href="/">
+                    <a href="/">
                         {/* https://nextjs.org/docs/app/api-reference/file-conventions/public-folder */}
                         <Image src="/assets/logo-orange.svg" alt="Abricot logo orange" width={147} height={18.72} />
-                    </Link>
+                    </a>
                 </h1>
 
                 <Menu />

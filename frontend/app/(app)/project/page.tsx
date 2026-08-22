@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { redirect } from 'next/dist/server/api-utils';
 
 import { handleCreateProject } from '@/app/(app)/action';
@@ -56,7 +55,7 @@ export default async function Project() {
           projectWithTasks.length &&
           projectWithTasks
             .map((project) => (
-              <Link key={project.id} href={`project/${project.id}`}><CardProject {...project} /></Link>
+              <a key={project.id} href={`project/${project.id}`}><CardProject {...project} /></a>
             ))
         }
       </section>

@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { nameFormatter } from '@/utils/name.formatter';
 
 import styles from './user-icon.module.css';
@@ -18,9 +17,9 @@ export default function UserIcon({
     const linkActiveClass = isActive && styles['user-icon-link-active'] || '';
 
     return (
-        <Link href={href}
+        <a href={href}
             className={`
                  ${styles['user-icon-link']}
-                 ${linkActiveClass}`}>{userNameInitials}</Link>
+                 ${linkActiveClass}`}>{userNameInitials}</a>
     );
 }

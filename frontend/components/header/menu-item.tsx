@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import styles from './menu-item.module.css';
 
@@ -12,7 +11,7 @@ type MenuItemProps = {
 
 export default function MenuItem({ textContent, href, imgSrc, imgAlt, isPathActive }: MenuItemProps) {
     return (
-        <Link
+        <a
             className={`
                 ${styles['menu-link']}
                 ${isPathActive && styles['menu-link-active']}
@@ -20,6 +19,6 @@ export default function MenuItem({ textContent, href, imgSrc, imgAlt, isPathActi
             href={href}>
             <Image src={imgSrc} alt={imgAlt} width={24} height={24} />
             {textContent}
-        </Link>
+        </a>
     );
 }
