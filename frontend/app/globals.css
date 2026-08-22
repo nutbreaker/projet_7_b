@@ -244,3 +244,9 @@ a {
 .caption-l-neutral-grey-950 {
   color: var(--neutral-grey-950);
 }
+
+.not-found {
+  flex: 1;
+  place-self: center;
+  place-content: center;
+}
