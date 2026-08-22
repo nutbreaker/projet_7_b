@@ -6,11 +6,13 @@ import MenuItem from '@/components/header/menu-item';
 import UserIcon from '@/components/user-icon/user-icon';
 
 import styles from './menu.module.css';
+import { useUser } from '@/contexts/userContext';
 
 export default function Menu() {
     // https://nextjs.org/docs/app/api-reference/functions/use-pathname
     const pathname = usePathname();
     const isPathActive = (href: string) => pathname === href;
+    const {userName} = useUser();
 
     return (
         <nav className={styles.menu} aria-label="Menu principal">
@@ -22,7 +24,7 @@ export default function Menu() {
                     <MenuItem textContent="Projets" href="/project" imgSrc="/assets/projects-icon.svg" imgAlt="Icône projets" isPathActive={isPathActive('/project')} />
                 </li>
                 <li>
-                    <UserIcon href={"/profile"} isActive={isPathActive('/profile')} userName={"Jean Paul"} />
+                    <UserIcon href={"/profile"} isActive={isPathActive('/profile')} userName={userName} />
                 </li>
             </ul>
         </nav>
