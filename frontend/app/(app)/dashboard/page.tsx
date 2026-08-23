@@ -14,6 +14,8 @@ import ModalTaskDisplay from '@/components/modal/modal-task-display';
 import type { Task } from '@/types/api.types';
 
 import styles from './page.module.css';
+import OpenModalIAButton from '@/components/buttons/open-modal-ia-button';
+import ModalTaskListIA from '@/components/modal/modal-task-list-ia';
 
 export default async function Dashboard(
   { searchParams }: {
@@ -35,6 +37,7 @@ export default async function Dashboard(
   const searchQuery = (resolvedParams.search as string || '').toLowerCase();
   const taskId = (resolvedParams.taskid as string || '').toLowerCase();
   const createProjectModalId = 'create-project-modal';
+  const iaTaskModalId = 'ia-task-modal';
 
   let taskSearch = tasks, tasksTodo: Task[] = [], tasksInProgress: Task[] = [], tasksDone: Task[] = [];
   let taskToDisplay = undefined;
@@ -66,14 +69,18 @@ export default async function Dashboard(
   return (
     <div>
       <section className={styles['dashboard-header']}>
-        <div>
+        <div className={styles['dashboard-header-content']}>
           <h2 className={'headings-h4-neutral-grey-800'}>Tableau de bord</h2>
           <p className={'body-l-black'}>Bonjour {userName}, voici un aperçu de vos projets et tâches</p>
         </div>
 
-        <CreateProjectButton modalId={createProjectModalId} />
+        <div className={styles['dashboard-header-buttons']}>
+          <CreateProjectButton modalId={createProjectModalId} />
+          <OpenModalIAButton className={`${styles['task-ia-button']} body-m-neutral-white`} modalId={iaTaskModalId} />
+        </div>
 
         <ModalCreateProject id={createProjectModalId} formAction={handleCreateProject} />
+        <ModalTaskListIA id={iaTaskModalId} />
       </section>
 
       <div className={styles['dashboard-type']}>

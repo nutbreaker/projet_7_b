@@ -1,0 +1,130 @@
+.modal-task-ia {
+    padding-bottom: 39px;
+
+    h4 {
+        margin-block: 0 40px;
+
+        background-image: url("assets/start-brand-color.svg");
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 21px;
+        padding-left: 29px;
+    }
+}
+
+
+.modal-task-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-height: 400px;
+
+    overflow-y: auto;
+}
+
+.modal-task-ia-form-container {
+    width: calc(100% + 146px);
+    margin-inline: -73px;
+    padding-inline: 73px;
+    padding-top: 24px;
+
+    border-top: solid 1px var(--neutral-grey-200);
+}
+
+.modal-task-ia-form {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    height: 60px;
+    padding: 18px 32px;
+
+    background: var(--neutral-grey-50);
+    border-radius: 999px;
+
+    &:has(input[type="text"]:focus) {
+        outline: solid 1px var(--brand-dark-orange);
+    }
+}
+
+.modal-task-ia-input {
+    flex: 1;
+
+    input[type="text"] {
+        width: 100%;
+        padding: 0;
+        color: var(--black);
+        background: transparent;
+        border: none;
+        outline: none;
+    }
+}
+
+.modal-create-ia-task-button {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.task-ia {
+    display: flex;
+    flex-direction: column;
+
+    padding: 25px 40px;
+
+    background-color: var(--neutral-white);
+    border: solid 1px var(--neutral-grey-200);
+    border-radius: 10px;
+}
+
+.task-ia-header {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.task-ia-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 32px;
+
+    margin-top: 32px;
+
+    ul {
+        display: flex;
+        align-self: center;
+        gap: 15px;
+
+        margin: 0;
+        padding: 0;
+
+        list-style: none;
+        font-size: var(--font-size-xs);
+        color: var(--neutral-grey-600);
+    }
+
+    span {
+        display: flex;
+        gap: 8px;
+    }
+}
+
+.task-ia-delete::before {
+    content: url('assets/bin.svg');
+}
+
+.task-ia-update::before {
+    content: url('assets/pen.svg');
+}
+
+.task-ia-separator {
+    color: var(--neutral-grey-400);
+}
+
+@media (max-width: 1024px) {
+    .modal-task-ia-form-container {
+        width: calc(100% + 60px);
+        margin-inline: -30px;
+        padding-inline: 30px;
+    }
+}
