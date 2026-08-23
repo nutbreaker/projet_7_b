@@ -16,7 +16,7 @@ import styles from './task-project.module.css';
 import OpenModalProjectTaskButton from '../buttons/open-modal-project-task-button';
 import ModalUpdateTask from '../modal/modal-update-task';
 import ModalDeleteProjectTask from '../modal/modal-delete-project-task';
-import { handleAddComment, handleDeleteProjectTask, handleUpdateProjectTask } from '@/app/(app)/project/actions';
+import { handleAddComment, handleDeleteProjectTask, handleUpdateProjectTask } from '@/app/(app)/projects/actions';
 
 export default function TaskProject({ userName, project, task, editable = true, className = '' }: { userName: string, project: Project, task: Task, editable?: boolean, className?: string }) {
     const pathname = usePathname();

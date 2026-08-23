@@ -79,7 +79,7 @@ export async function handleUpdateProjectTask(prevState: unknown, formData: Form
     }
 
 
-    redirect(`/project/${projectId}`);
+    redirect(`/projects/${projectId}`);
 }
 
 export async function handleDeleteProjectTask(prevState: unknown, formData: FormData) {
@@ -116,7 +116,7 @@ export async function handleDeleteProjectTask(prevState: unknown, formData: Form
     }
 
 
-    redirect(`/project/${projectId}`);
+    redirect(`/projects/${projectId}`);
 }
 export async function handleUpdateProject(prevState: unknown, formData: FormData) {
     const id = formData.get('project-id') as string;
@@ -158,7 +158,7 @@ export async function handleUpdateProject(prevState: unknown, formData: FormData
         }
     }
 
-    redirect(`/project/${id}`);
+    redirect(`/projects/${id}`);
 }
 
 export async function handleCreateTask(prevState: unknown, formData: FormData) {
@@ -214,6 +214,6 @@ export async function handleCreateTask(prevState: unknown, formData: FormData) {
         }
     }
 
-    redirect(`/project/${projectId}`);
+    redirect(`/projects/${projectId}`);
 }
 

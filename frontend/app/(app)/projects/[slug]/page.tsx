@@ -93,7 +93,7 @@ export default async function Project({
 
   return (
     <div className={styles['project-container']}>
-      <Link href={'/project'} className={styles['project-back-button']} aria-label="retour" />
+      <Link href={'/projects'} className={styles['project-back-button']} aria-label="retour" />
       <section className={styles['project-header']}>
         <div className={styles['project-header-container']}>
           <div className={styles['project-header-content']}>

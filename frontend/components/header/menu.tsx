@@ -21,7 +21,7 @@ export default function Menu() {
                     <MenuItem textContent="Tableau de bord" href="/dashboard" imgSrc="/assets/dashboard-icon.svg" imgAlt="Icône Tableau de bord" isPathActive={isPathActive('/dashboard')} />
                 </li>
                 <li className={styles['item-right']}>
-                    <MenuItem textContent="Projets" href="/project" imgSrc="/assets/projects-icon.svg" imgAlt="Icône projets" isPathActive={isPathActive('/project')} />
+                    <MenuItem textContent="Projets" href="/projects" imgSrc="/assets/projects-icon.svg" imgAlt="Icône projets" isPathActive={isPathActive('/projects')} />
                 </li>
                 <li>
                     <UserIcon href={"/profile"} isActive={isPathActive('/profile')} userName={userName} />

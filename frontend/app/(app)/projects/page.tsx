@@ -55,7 +55,7 @@ export default async function Project() {
           projectWithTasks.length &&
           projectWithTasks
             .map((project) => (
-              <a key={project.id} href={`project/${project.id}`}><CardProject {...project} /></a>
+              <a key={project.id} href={`projects/${project.id}`}><CardProject {...project} /></a>
             ))
         }
       </section>
