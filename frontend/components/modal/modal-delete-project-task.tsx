@@ -21,7 +21,7 @@ export default function ModalDeleteProjectTask(
     return (
         <Modal id={id} className={styles['modal-delete-project']}>
 
-            <h4 className={'headings-h4-neutral-grey-800'}>Supprimer le projet</h4>
+            <h1 className={'headings-h4-neutral-grey-800'}>Supprimer le projet</h1>
 
             <p>Etes-vous sûr de vouloir supprimer la tâche ?</p>
 

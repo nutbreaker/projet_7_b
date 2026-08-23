@@ -35,7 +35,7 @@ export default function ModalUpdateTask(
 
     return (
         <Modal id={id} className={styles['modal-create-task']}>
-            <h4 className={'headings-h4-neutral-grey-800'}>Modifier</h4>
+            <h1 className={'headings-h4-neutral-grey-800'}>Modifier</h1>
 
             <Form className={styles['modal-create-task-form']} action={action}>
                 <input type="hidden" name="project-id" value={task.projectId} />

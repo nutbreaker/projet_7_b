@@ -23,7 +23,7 @@ export default function ModalCreateProject({ id, formAction }: {
     return (
         <Modal id={id} className={styles['modal-create-project']}>
 
-            <h4 className={'headings-h4-neutral-grey-800'}>Créer un projet</h4>
+            <h1 className={'headings-h4-neutral-grey-800'}>Créer un projet</h1>
 
 
             <Form className={''} action={action}>

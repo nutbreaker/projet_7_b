@@ -15,7 +15,7 @@ export default function ModalCreateTaskIA(
 
     return (
         <Modal id={id} className={styles['modal-create-task-ia']}>
-            <h4 className={'headings-h4-neutral-grey-800'}>Créer une tâche</h4>
+            <h1 className={'headings-h4-neutral-grey-800'}>Créer une tâche</h1>
 
             <div className={styles['modal-create-task-content']}></div>
             <Form

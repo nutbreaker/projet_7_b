@@ -28,7 +28,7 @@ export default function ModalUpdateProject(
     return (
         <Modal id={id} className={styles['modal-create-project']}>
 
-            <h4 className={'headings-h4-neutral-grey-800'}>Modifier un projet</h4>
+            <h1 className={'headings-h4-neutral-grey-800'}>Modifier un projet</h1>
 
             <Form className={''} action={action}>
                 <input type="hidden" name="project-id" value={project.id} />

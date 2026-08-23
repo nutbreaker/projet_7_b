@@ -41,7 +41,7 @@ export default function ModalCreateTask(
 
     return (
         <Modal id={id} className={styles['modal-create-task']}>
-            <h4 className={'headings-h4-neutral-grey-800'}>Créer une tâche</h4>
+            <h1 className={'headings-h4-neutral-grey-800'}>Créer une tâche</h1>
 
             <Form className={styles['modal-create-task-form']} action={action}>
                 <input type="hidden" name="project-id" value={project.id} />
