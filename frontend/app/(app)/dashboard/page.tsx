@@ -120,7 +120,7 @@ export default async function Dashboard(
         isKanban &&
         <section className={styles['dashboard-kanban-container']}>
           <div className={`${styles['dashboard-kanban-tasks']} ${styles['dashboard-kanban-tasks-todo']}`}>
-            <h5 className='headings-h5-neutral-grey-800'>A faire <Tag type='grey'>{tasksTodo.length}</Tag></h5>
+            <h3 className='headings-h5-neutral-grey-800'>A faire <Tag type='grey'>{tasksTodo.length}</Tag></h3>
 
             {tasksTodo.map(task => (
               <TaskDashboard
@@ -131,7 +131,7 @@ export default async function Dashboard(
           </div>
 
           <div className={`${styles['dashboard-kanban-tasks']} ${styles['dashboard-kanban-tasks-in-progress']}`}>
-            <h5 className='headings-h5-neutral-grey-800'>En cours <Tag type='grey'>{tasksInProgress.length}</Tag></h5>
+            <h3 className='headings-h5-neutral-grey-800'>En cours <Tag type='grey'>{tasksInProgress.length}</Tag></h3>
 
             {tasksInProgress.map(task => (
               <TaskDashboard
@@ -142,7 +142,7 @@ export default async function Dashboard(
           </div>
 
           <div className={`${styles['dashboard-kanban-tasks']} ${styles['dashboard-kanban-tasks-done']}`}>
-            <h5 className='headings-h5-neutral-grey-800'>Terminées <Tag type='grey'>{tasksDone.length}</Tag></h5>
+            <h3 className='headings-h5-neutral-grey-800'>Terminées <Tag type='grey'>{tasksDone.length}</Tag></h3>
 
             {tasksDone.map(task => (
               <TaskDashboard

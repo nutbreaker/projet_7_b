@@ -17,7 +17,7 @@ export default function CardProject({ name, description, owner, members, tasks }
     return (
         <article className={styles['card-project']}>
             <div className={styles['card-project-header']}>
-                <h5 className={`headings-h5-neutral-grey-800`}>{name}</h5>
+                <h3 className={`headings-h5-neutral-grey-800`}>{name}</h3>
                 <p className={`body-s-neutral-grey-600`}>{description}</p>
             </div>
 

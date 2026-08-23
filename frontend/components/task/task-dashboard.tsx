@@ -27,11 +27,11 @@ export default function TaskDashboard({ id, title, description, status, dueDate,
     return (
         <article className={styles['task-dashboard']}>
             <div className={styles['task-dashboard-header']}>
-                <h5 className={`headings-h5-neutral-grey-800`}>{title}
+                <h4 className={`headings-h5-neutral-grey-800`}>{title}
                     <Tag
                         className={styles['task-dashboard-header-tag']}
                         type={statusValues[status].type}
-                    >{statusValues[status].label}</Tag></h5>
+                    >{statusValues[status].label}</Tag></h4>
                 <p className={`body-s-neutral-grey-600`}>{description}</p>
             </div>
             <div className={styles['task-dashboard-footer']}>
