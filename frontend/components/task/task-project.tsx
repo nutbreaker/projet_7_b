@@ -2,7 +2,7 @@
 
 import Form from 'next/form';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { useActionState, useState } from 'react';
+import { useActionState, useState, useId } from 'react';
 import Tag from '@/components/tag/tag';
 import Comment from '@/components/comment/comment';
 import AddComment from '@/components/comment/add-comment';
@@ -43,6 +43,7 @@ export default function TaskProject({ userName, project, task, editable = true, 
     const fullUrl = searchParams.toString()
         ? `${pathname}?${searchParams.toString()}`
         : pathname;
+    const anchorName = `--task-project-menu-${useId()}`;
 
 
     return (
@@ -56,8 +57,8 @@ export default function TaskProject({ userName, project, task, editable = true, 
                     >{statusValues[task.status].label}</Tag>
 
                     {editable && <div className={styles['task-project-menu-container']}>
-                        <button popoverTarget={`settings-${task.id}`} className={styles['task-project-menu-button']} aria-label="menu"></button>
-                        <nav popover='' id={`settings-${task.id}`} className={styles['task-project-menu-nav']}>
+                        <button popoverTarget={`settings-${task.id}`} style={{ '--anchor-name': anchorName } as React.CSSProperties} className={styles['task-project-menu-button']} aria-label="menu"></button>
+                        <nav popover='' id={`settings-${task.id}`} style={{ '--position-anchor': anchorName } as React.CSSProperties} className={styles['task-project-menu-nav']}>
                             <ul>
                                 <li><OpenModalProjectTaskButton modalId={editModalId} label={'Editer'} /></li>
                                 <li><OpenModalProjectTaskButton modalId={deleteModalId} label={'Supprimer'} /></li>

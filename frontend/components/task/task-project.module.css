@@ -43,7 +43,7 @@
     https://css-tricks.com/css-anchor-positioning-guide/
     https://web.dev/learn/css/anchor-positioning
     */
-    anchor-name: --task-project-menu-button;
+    anchor-name: var(--anchor-name, --task-project-menu-button);
     width: 57px;
     height: 57px;
 
@@ -67,13 +67,13 @@
 }
 
 .task-project-menu-nav {
-    position: relative;
-    position-anchor: --task-project-menu-button;
+    position-anchor: var(--position-anchor, --task-project-menu-button);
+    position-area: bottom span-left;
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position-try-fallbacks */
+    position-try-fallbacks: top span-left;
 
-    margin: 5px 0 0 0;
+    margin: 5px 0;
     padding: 25px 20px;
-    inset: auto;
-    right: anchor(right);
 
     border: solid 1px var(--neutral-grey-200);
     background-color: var(--neutral-white);
@@ -179,7 +179,7 @@
 }
 
 @media (max-width: 1024px) {
-    .task-project-menu-nav button{
+    .task-project-menu-nav button {
         width: fit-content;
     }
 }
