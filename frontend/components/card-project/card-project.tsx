@@ -12,8 +12,6 @@ export default function CardProject({ name, description, owner, members, tasks }
     const ownerInitials = nameFormatter(owner.name);
     const membersInitials = members.map(member => nameFormatter(member.user.name));
 
-    console.log(styles['card-project-project-member']);
-
     return (
         <article className={styles['card-project']}>
             <div className={styles['card-project-header']}>
@@ -23,7 +21,7 @@ export default function CardProject({ name, description, owner, members, tasks }
 
             <div className={styles['card-project-content']}>
                 <p className={`body-xs-neutral-grey-600`}>Progression  <span className={`body-xs-neutral-grey-800`}>{progression}</span></p>
-                <div className={styles['card-project-progression-bar']} style={{ '--project-progression': `${progression}` }}></div>
+                <div className={styles['card-project-progression-bar']} style={{ '--project-progression': `${progression}` } as React.CSSProperties}></div>
                 <p className={`body-2xs-neutral-grey-600`}>{tasksDoneCount}/{tasksCount} tâches terminées</p>
             </div>
 

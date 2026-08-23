@@ -33,7 +33,7 @@ export async function handleAddComment(prevState: unknown, formData: FormData) {
                 }
             };
         }
-    } catch {}
+    } catch { }
 
     redirect(redirectUrl);
 }
@@ -60,6 +60,8 @@ export async function handleUpdateProjectTask(prevState: unknown, formData: Form
             status,
             assigneeIds,
         } as Task);
+
+        console.log(updatedTask);
 
         if (!updatedTask.success) {
             return {

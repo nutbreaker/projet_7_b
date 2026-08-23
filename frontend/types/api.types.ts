@@ -8,6 +8,9 @@ export type ErrorResponse = {
     message: string,
     error: string,
     details?: ErrorDetail[],
+    data?: {
+        errors: []
+    }
 };
 
 export type Success<T> = {
@@ -50,6 +53,9 @@ export type ProjectWithTasks = Project & { tasks: Task[] };
 export type Projects = {
     projects: Project[]
 };
+export type ProjectData = {
+    project: Project
+};
 
 export type TaskStatus = "TODO" | "IN_PROGRESS" | "DONE" | "CANCELLED";
 export type TaskPriority = "LOW" | "MEDIUM" | "HIGH" | "URGENT";
@@ -76,12 +82,10 @@ export type User = {
     updatedAt: string,
 };
 export type Users = {
-    data: {
-        users: User[]
-    }
+    users: User[]
 };
 export type UserData = {
-        user: User
+    user: User
 };
 
 export type CommentAuthor = {
@@ -124,6 +128,7 @@ export type Task = {
     creatorId: string,
 
     assignees: TaskAssignee[],
+    assigneeIds: string[],
     comments: Comment[],
 
     createdAt: string,

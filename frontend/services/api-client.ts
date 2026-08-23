@@ -13,7 +13,7 @@ export type ApiResponse<T> = Success<T> | ErrorResponse;
 /**
  * Generic HTTP client to request the API.
  */
-export async function apiClient<T>(endpoint: string|URL, options: Options): Promise<ApiResponse<T>> {
+export async function apiClient<T>(endpoint: string | URL, options: Options): Promise<ApiResponse<T>> {
     try {
         const { token } = options;
 
@@ -34,6 +34,7 @@ export async function apiClient<T>(endpoint: string|URL, options: Options): Prom
         return (await response.json()) as ApiResponse<T>;
     } catch (error: unknown) {
         const err = error as { message?: string; name?: string };
+
         return {
             success: false,
             message: err.message,

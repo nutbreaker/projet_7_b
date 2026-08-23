@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
     const token = await getSessionToken() || '';
     const result = await userSearch(token, query.toLowerCase());
 
-    if (!result.success) Response.json([]);
+    if (!result.success) return Response.json([]);
 
     return Response.json(result?.data?.users);
 }

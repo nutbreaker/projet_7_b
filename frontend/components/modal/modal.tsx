@@ -8,7 +8,6 @@ type ModalProps = {
     open?: boolean
 };
 
-
 export default function Modal({ id, className = '', children, onClose, open = false }: ModalProps) {
     return (
         <dialog id={id} className={`${styles['modal']} ${className}`} open={open} onClose={onClose}>

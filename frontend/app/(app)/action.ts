@@ -25,7 +25,7 @@ export async function handleCreateProject(prevState: unknown, formData: FormData
         if (!newProject.success) {
             return {
                 error: newProject.message || 'Une erreur est survenue lors de la création du projet.',
-                details: newProject.data.errors,
+                details: newProject?.data?.errors || [],
                 fields: {
                     name,
                     description,
@@ -36,11 +36,12 @@ export async function handleCreateProject(prevState: unknown, formData: FormData
 
         newProjectId = newProject.data.project.id;
 
-    } catch (error: any) {
+    } catch (error: unknown) {
+        const err = error as { message?: string; fields?: [] };
         // https://nextjs.org/docs/app/api-reference/file-conventions/error
         return {
-            error: error.message || 'Une erreur imprévue s\'est produite veuillez réessayer.',
-            fields: error.fields
+            error: err.message || 'Une erreur imprévue s\'est produite veuillez réessayer.',
+            fields: err.fields
         };
     }
 

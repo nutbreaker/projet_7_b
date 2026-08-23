@@ -10,7 +10,7 @@ export default function SelectAssignee(
         name: string,
         className?: string,
         defaultValue?: TaskAssigneeIds
-        members: Any[]
+        members: TaskAssignee[]
     }
 ) {
     const [userSearchquery, setUserSearchQuery] = useState('');
@@ -18,7 +18,7 @@ export default function SelectAssignee(
     const [selectedOptions, setSelectedOptions] = useState(defaultValue);
     const displayOptions = [...options];
 
-    const handleInputChange = async (e) => {
+    const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement, Element>) => {
         const value = e.target.value;
 
         setUserSearchQuery(value);
@@ -26,16 +26,16 @@ export default function SelectAssignee(
         setOptions(members.filter(assigne => (assigne.user.email.toLowerCase().includes(value), assigne.user.name.toLowerCase().includes(value))));
     };
 
-    const handleSelectChange = (e) => {
+    const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement, Element>) => {
         const selectedOptions = Array.from(e.target.selectedOptions);
         const newSelected = selectedOptions.map(selectedOption =>
             displayOptions.find(option => option.userId === selectedOption.value)
         );
 
-        setSelectedOptions(newSelected);
+        setSelectedOptions(newSelected as unknown as TaskAssigneeIds);
     };
 
-    const handleLabelBlur = (e) => {
+    const handleLabelBlur = (e: React.FocusEvent<HTMLLabelElement, Element>) => {
         if (e.currentTarget.contains(e.relatedTarget)) return;
 
         setUserSearchQuery("");

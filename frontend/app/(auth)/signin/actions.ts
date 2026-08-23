@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 
 // https://nextjs.org/docs/app/guides/forms
 
-export async function handleSignin(prevState: any, formData: FormData) {
+export async function handleSignin(prevState: unknown, formData: FormData) {
     const email = formData.get('email');
     const password = formData.get('password');
 
@@ -20,8 +20,6 @@ export async function handleSignin(prevState: any, formData: FormData) {
         const json = await response.json();
 
         if (!response.ok) {
-            // throw new Error(json.message || 'Une erreur est survenue lors de la connexion.');
-
             return {
                 error: json.message || 'Une erreur est survenue lors de la connexion.',
                 fields: { email }
@@ -29,12 +27,11 @@ export async function handleSignin(prevState: any, formData: FormData) {
         }
 
         await setSessionCookie(json?.data?.token);
-    } catch (error: any) {
-        console.error('Erreur handleSignin:', error);
-        // throw error;
+    } catch (error: unknown) {
+        const err = error as { message?: string };
 
         return {
-            error: error.message || 'Une erreur imprévue s\'est produite veuillez réessayer.',
+            error: err.message || 'Une erreur imprévue s\'est produite veuillez réessayer.',
             fields: { email }
         };
     }

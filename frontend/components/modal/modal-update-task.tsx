@@ -5,9 +5,6 @@ import { useState, useActionState } from 'react';
 
 import Modal from "./modal";
 import Input from "../form-element/input";
-import Select from "../form-element/select";
-
-import useSearchUsers from '@/hooks/useSearchUsers';
 
 import styles from './modal-create-task.module.css';
 import Button from "../buttons/button";
@@ -24,7 +21,6 @@ export default function ModalUpdateTask(
         task: Task
     }
 ) {
-    const optionsFetcher = useSearchUsers();
     const [title, setTitle] = useState(task.title);
     const [description, setDescription] = useState(task.description);
     const [dueDate, setDueDate] = useState(task.dueDate || '');
@@ -47,15 +43,12 @@ export default function ModalUpdateTask(
 
                 <Input id='due-date' defaultValue={state.fields.dueDate} type='date' label='Echéance*' inputChangeHandler={(e) => setDueDate(e.target.value.trim())} />
 
-                {/* <Select name={'assignees'} label={'Assigné à'} defaultValue={state.fields.assignees.map(assignee => assignee.user)} optionsFetcher={optionsFetcher}></Select> */}
-
                 <SelectAssignee
                     name={'assignees'}
                     label={'Assigné à'}
                     defaultValue={defaultAssignees}
-                    members={projectMembers}
+                    members={projectMembers as unknown as TaskAssignee[]}
                 />
-
 
                 <fieldset className={styles['modal-form-status-radio']}>
                     <legend className={'body-s-black'}>Statut :</legend>

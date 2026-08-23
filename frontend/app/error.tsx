@@ -10,8 +10,6 @@ export default function Error({
     error: ErrorResponse
     unstable_retry: () => void
 }) {
-
-    console.log(error);
     return (
         <div>
             <h2>{error.error}</h2>

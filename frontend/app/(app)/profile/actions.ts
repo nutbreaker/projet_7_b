@@ -5,7 +5,7 @@ import { revalidatePath } from 'next/cache';
 
 // https://github.com/OpenClassrooms-Student-Center/dev-react-P10/blob/fe5fa162ce72cecee6584d0b87c23c7c15f8a69c/src/controllers/authController.ts#L320-L388
 
-export async function handleProfile(prevState: any, formData: FormData) {
+export async function handleProfile(prevState: unknown, formData: FormData) {
     const firstName = formData.get('first-name');
     const lastName = formData.get('last-name');
     const email = formData.get('email');
@@ -30,7 +30,6 @@ export async function handleProfile(prevState: any, formData: FormData) {
         const json = await response.json();
 
         if (!response.ok) {
-            console.log('ERROR', JSON.stringify(json));
             return {
                 message: json.message || 'Impossible de mettre à jour le profil',
                 ...json
@@ -39,7 +38,7 @@ export async function handleProfile(prevState: any, formData: FormData) {
 
         revalidatePath('/profile');
 
-    } catch (error) {
+    } catch {
         return { error: 'Une erreur imprévue s\'est produite veuillez réessayer.' }
     }
 }

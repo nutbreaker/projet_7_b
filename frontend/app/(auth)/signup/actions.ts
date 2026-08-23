@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 
 // https://nextjs.org/docs/app/guides/forms
 
-export async function handleSignup(prevState: any, formData: FormData) {
+export async function handleSignup(prevState: unknown, formData: FormData) {
     const email = formData.get('email');
     const password = formData.get('password');
 
@@ -30,12 +30,11 @@ export async function handleSignup(prevState: any, formData: FormData) {
         }
 
         await setSessionCookie(json?.data?.token);
-    } catch (error: any) {
-        console.error('Erreur handleSignup:', error);
-        // throw error;
+    } catch (error: unknown) {
+        const err = error as { message?: string };
 
         return {
-            error: error.message || 'Une erreur imprévue s\'est produite veuillez réessayer.',
+            error: err.message || 'Une erreur imprévue s\'est produite veuillez réessayer.',
             fields: { email }
         };
     }

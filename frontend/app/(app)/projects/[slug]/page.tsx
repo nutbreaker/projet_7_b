@@ -1,7 +1,7 @@
 import { getSessionToken } from '@/services/session';
 
 import Link from 'next/link';
-import { redirect } from 'next/dist/server/api-utils';
+import { redirect } from 'next/navigation';
 import { Fragment } from 'react/jsx-runtime';
 import { projectById, projectsIdTasks } from '@/services/projects-id-tasks';
 import { authProfile } from '@/services/auth-profile';
@@ -15,7 +15,7 @@ import TaskProject from '@/components/task/task-project';
 
 import TaskSearch from '../../task-search';
 
-import type { ProjectMember, Task } from '@/types/api.types';
+import type { Project, ProjectMember } from '@/types/api.types';
 
 import styles from './page.module.css';
 import Chip from '@/components/chip/chip';
@@ -52,10 +52,10 @@ export default async function Project({
   const responseProjectById = await projectById(token, resolvedParams.slug);
   const responseProjectsIdTasks = await projectsIdTasks(token, resolvedParams.slug)
   const tasks = responseProjectsIdTasks.success && responseProjectsIdTasks.data.tasks || [];
-  const { project } = responseProjectById.success && responseProjectById.data;
+  const { project } = responseProjectById.success && responseProjectById.data || ({ project: {} as Project });
 
   const ownerInitials = nameFormatter(project.owner.name);
-  const projectMembersText = (members = []) => {
+  const projectMembersText = (members = [] as ProjectMember[]) => {
     const len = members.length + 1;
 
     if (len > 1) return `${len} personnes`;

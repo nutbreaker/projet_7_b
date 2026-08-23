@@ -1,4 +1,4 @@
-import { redirect } from 'next/dist/server/api-utils';
+import { redirect } from 'next/navigation';
 
 import { handleCreateProject } from '@/app/(app)/action';
 
@@ -23,9 +23,9 @@ export default async function Project() {
 
   const createProjectModalId = 'create-project-modal';
   const projectsResponse = await projects(token as string);
-  const projectList = projectsResponse.success && projectsResponse.data.projects as Project[];
+  const projectList = projectsResponse.success && projectsResponse.data.projects || [] as Project[];
 
-  const projectWithTasks: ProjectWithTasks[] = await Promise.all(
+  const projectWithTasks = await Promise.all(
     projectList.map(async (project: Project) => {
       const taskResponse = await projectsIdTasks(token as string, project.id);
       const tasks = taskResponse.success && taskResponse.data.tasks as Task[];
@@ -55,7 +55,7 @@ export default async function Project() {
           projectWithTasks.length &&
           projectWithTasks
             .map((project) => (
-              <a key={project.id} href={`projects/${project.id}`}><CardProject {...project} /></a>
+              <a key={project.id} href={`projects/${project.id}`}><CardProject {...project as ProjectWithTasks} /></a>
             ))
         }
       </section>

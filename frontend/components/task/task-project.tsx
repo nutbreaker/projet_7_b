@@ -18,7 +18,7 @@ import ModalUpdateTask from '../modal/modal-update-task';
 import ModalDeleteProjectTask from '../modal/modal-delete-project-task';
 import { handleAddComment, handleDeleteProjectTask, handleUpdateProjectTask } from '@/app/(app)/projects/actions';
 
-export default function TaskProject({ userName, project, task, editable = true, className = '' }: { userName: string, project: Project, task: Task, editable?: boolean, className?: string }) {
+export default function TaskProject({ userName, project, task, editable = true, className = '' }: { userName: string, project?: Project, task: Task, editable?: boolean, className?: string }) {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const formattedDate = dateFormatter(task.dueDate);
@@ -65,7 +65,7 @@ export default function TaskProject({ userName, project, task, editable = true, 
                             </ul>
                         </nav>
 
-                        <ModalUpdateTask id={editModalId} project={project} task={task} formAction={handleUpdateProjectTask} />
+                        <ModalUpdateTask id={editModalId} project={project as Project} task={task} formAction={handleUpdateProjectTask} />
                         <ModalDeleteProjectTask id={deleteModalId} task={task} formAction={handleDeleteProjectTask} />
                     </div>
                     }
@@ -94,7 +94,6 @@ export default function TaskProject({ userName, project, task, editable = true, 
                                 redirectUrl={fullUrl}
                                 projectId={task.projectId}
                                 taskId={task.id} authorName={userName} />
-
 
                             {
                                 addCommentState.error &&

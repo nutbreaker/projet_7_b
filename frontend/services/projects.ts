@@ -1,7 +1,7 @@
 // https://nextjs.org/docs/app/getting-started/fetching-data#sharing-data-with-context-and-reactcache
 import { cache } from 'react';
 import { apiClient } from './api-client';
-import type { Projects, Project, PostProject, PostTask, Task } from '@/types/api.types';
+import type { Projects, Project, PostProject, PostTask, Task, Comment, ProjectData } from '@/types/api.types';
 
 export const projects = cache((token: string) => {
     return apiClient<Projects>('/projects', {
@@ -11,7 +11,7 @@ export const projects = cache((token: string) => {
 });
 
 export const postProjects = cache((token: string, project: PostProject) => {
-    return apiClient<Project>('/projects', {
+    return apiClient<ProjectData>('/projects', {
         method: 'POST',
         token,
         body: JSON.stringify(project)
@@ -51,7 +51,7 @@ export const postTask = cache((token: string, task: PostTask) => {
 });
 
 export const postComment = cache((token: string, { projectId, taskId, content }: { projectId: string, taskId: string, content: string }) => {
-    return apiClient<unknown>(`/projects/${projectId}/tasks/${taskId}/comments`, {
+    return apiClient<Comment>(`/projects/${projectId}/tasks/${taskId}/comments`, {
         method: 'POST',
         token,
         body: JSON.stringify({ content: content })

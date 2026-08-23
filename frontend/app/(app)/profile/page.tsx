@@ -10,7 +10,7 @@ export default async function Profile() {
     redirect('/signin');
   }
 
-  const { success, message, data: { user = {} } = {} } = await getProfileData(token);
+  const { data: { user = {} } = {} } = await getProfileData(token);
 
   return (
     <div className={styles.profile}>

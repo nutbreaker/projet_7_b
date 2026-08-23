@@ -12,7 +12,6 @@ import AIButton from "../ia-button/ia-button";
 export default function ModalCreateTaskIA(
     { id }: { id: string, }
 ) {
-
     return (
         <Modal id={id} className={styles['modal-create-task-ia']}>
             <h1 className={'headings-h4-neutral-grey-800'}>Créer une tâche</h1>
