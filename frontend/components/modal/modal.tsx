@@ -1,4 +1,14 @@
+import 'react';
+
 import styles from '@/components/modal/modal.module.css';
+
+// fix the TS missing properties when building the project
+declare module 'react' {
+    interface ButtonHTMLAttributes<T> {
+        commandfor?: string;
+        command?: string;
+    }
+}
 
 type ModalProps = {
     id: string,
