@@ -9,30 +9,33 @@ export default function SelectAssignee(
         label: string,
         name: string,
         className?: string,
-        defaultValue?: TaskAssigneeIds
+        defaultValue?: TaskAssigneeIds,
         members: TaskAssignee[]
     }
 ) {
     const [userSearchquery, setUserSearchQuery] = useState('');
     const [options, setOptions] = useState(members);
-    const [selectedOptions, setSelectedOptions] = useState(defaultValue);
+    const [selectedOptions, setSelectedOptions] = useState<TaskAssigneeIds>(defaultValue);
     const displayOptions = [...options];
 
     const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement, Element>) => {
-        const value = e.target.value;
+        const value = e.target.value.toLowerCase();
 
-        setUserSearchQuery(value);
+        setUserSearchQuery(e.target.value);
 
-        setOptions(members.filter(assigne => (assigne.user.email.toLowerCase().includes(value), assigne.user.name.toLowerCase().includes(value))));
+        setOptions(
+            members.filter(
+                assignee =>
+                    assignee.user.email.toLowerCase().includes(value) ||
+                    assignee.user.name.toLowerCase().includes(value)
+            )
+        );
     };
 
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement, Element>) => {
-        const selectedOptions = Array.from(e.target.selectedOptions);
-        const newSelected = selectedOptions.map(selectedOption =>
-            displayOptions.find(option => option.userId === selectedOption.value)
-        );
+        const newSelected = Array.from(e.target.selectedOptions, option => option.value);
 
-        setSelectedOptions(newSelected as unknown as TaskAssigneeIds);
+        setSelectedOptions(newSelected);
     };
 
     const handleLabelBlur = (e: React.FocusEvent<HTMLLabelElement, Element>) => {
@@ -67,7 +70,7 @@ export default function SelectAssignee(
                 multiple
                 size={Math.min(displayOptions.length, 5) || 1}
                 onChange={handleSelectChange}
-                value={selectedOptions.map(selectedOption => selectedOption.userId)}
+                value={selectedOptions}
             >
                 {displayOptions.map(option => (
                     <option key={option.userId} value={option.userId}>

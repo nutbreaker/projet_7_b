@@ -27,7 +27,7 @@ export default function ModalUpdateTask(
     const isFormInvalid = !title || !description || !dueDate;
     const [state, action] = useActionState(formAction, { error: '', fields: { title: task.title, description: task.description, dueDate: isoStringDate(task.dueDate), assigneeIds: task.assignees, status: task.status }, details: [] });
     const projectMembers = [...project.members, { userId: project.owner.id, ...project.owner, user: { ...project.owner } }];
-    const defaultAssignees = task.assignees.map(assignee => ({ userId: assignee.user.id, ...assignee })) as TaskAssignee[];
+    const defaultAssignees = task.assignees.map(assignee => assignee.userId || assignee.user.id);
 
     return (
         <Modal id={id} className={styles['modal-create-task']}>
