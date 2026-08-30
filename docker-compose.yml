@@ -6,6 +6,6 @@ services:
     ports:
       - "8081:3000"
     volumes:
-      - abricot_db:/app/backend/prisma
+      - abricot_db:/abricot/backend/prisma
 volumes:
   abricot_db:

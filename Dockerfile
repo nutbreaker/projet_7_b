@@ -1,10 +1,10 @@
 FROM node:24-alpine
-WORKDIR /app
+WORKDIR /abricot
 
 COPY backend ./backend
 COPY frontend ./frontend
 
-WORKDIR /app/backend
+WORKDIR /abricot/backend
 
 RUN cp .env.example .env
 
@@ -14,11 +14,11 @@ RUN npm run db:push
 RUN npm run seed
 RUN npm run build
 
-WORKDIR /app/frontend
+WORKDIR /abricot/frontend
 RUN npm install
 RUN npm run build
-WORKDIR /app
+WORKDIR /abricot
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "npm --prefix /app/backend start & npm --prefix /app/frontend start & wait -n"]
+CMD ["sh", "-c", "npm --prefix /abricot/backend start & npm --prefix /abricot/frontend start & wait -n"]
