@@ -124,8 +124,9 @@ export async function handleUpdateProject(prevState: unknown, formData: FormData
     const id = formData.get('project-id') as string;
     const name = formData.get('name') as string;
     const description = formData.get('description') as string;
-    // doesn't seem to be handled by the backend ...
-    // refer to https://github.com/OpenClassrooms-Student-Center/dev-react-P10/blob/fe5fa162ce72cecee6584d0b87c23c7c15f8a69c/src/controllers/projectController.ts#L416-L419
+    // FIXME fix backend to allow contributors update
+    // api inconsistency
+    // https://github.com/OpenClassrooms-Student-Center/dev-react-P10/blob/fe5fa162ce72cecee6584d0b87c23c7c15f8a69c/src/controllers/projectController.ts#L416-L419
     const contributors = formData.getAll('contributors') as unknown as TaskAssigneeIds;
 
     try {
@@ -168,8 +169,9 @@ export async function handleCreateTask(prevState: unknown, formData: FormData) {
     const title = formData.get('title') as string;
     const description = formData.get('description') as string;
     const dueDate = formData.get('due-date') as string;
-    // doesn't seem to be handled by the backend ...
-    // refer to https://github.com/OpenClassrooms-Student-Center/dev-react-P10/blob/fe5fa162ce72cecee6584d0b87c23c7c15f8a69c/src/controllers/taskController.ts#L41-L47
+    // FIXME fix backend to allow setting the task status
+    // api inconsistency
+    // https://github.com/OpenClassrooms-Student-Center/dev-react-P10/blob/fe5fa162ce72cecee6584d0b87c23c7c15f8a69c/src/controllers/taskController.ts#L41-L47
     const status = formData.get('task-status') as TaskStatus;
     const assigneeIds = formData.getAll('assignees') as unknown as TaskAssigneeIds;
 
