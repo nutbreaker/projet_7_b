@@ -1,7 +1,7 @@
 import { getSessionToken } from '@/services/session';
 
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Fragment } from 'react/jsx-runtime';
 import { projectById, projectsIdTasks } from '@/services/projects-id-tasks';
 import { authProfile } from '@/services/auth-profile';
@@ -53,6 +53,12 @@ export default async function Project({
   const responseProjectsIdTasks = await projectsIdTasks(token, resolvedParams.slug)
   const tasks = responseProjectsIdTasks.success && responseProjectsIdTasks.data.tasks || [];
   const { project } = responseProjectById.success && responseProjectById.data || ({ project: {} as Project });
+
+  if (!responseProjectById.success) {
+    // what am I doing with my life...
+    // https://github.com/vercel/next.js/discussions/52233#discussioncomment-6779274
+    redirect('/404');
+  }
 
   const ownerInitials = nameFormatter(project.owner.name);
   const projectMembersText = (members = [] as ProjectMember[]) => {

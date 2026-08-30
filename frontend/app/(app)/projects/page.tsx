@@ -52,12 +52,13 @@ export default async function Project() {
 
       <section className={styles['project-list']}>
         {
-          projectWithTasks.length &&
           projectWithTasks
             .map((project) => (
               <a key={project.id} href={`projects/${project.id}`}><CardProject {...project as ProjectWithTasks} /></a>
             ))
         }
+
+        {!projectWithTasks.length && <p className={'body-m-neutral-grey-600'} style={{ textAlign: 'center' }}>Aucun projet</p>}
       </section>
     </div >
   );

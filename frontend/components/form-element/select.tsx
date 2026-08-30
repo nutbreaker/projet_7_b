@@ -77,8 +77,8 @@ export default function Select(
                 onChange={handleSelectChange}
                 value={selectedOptions.map(selectedOption => selectedOption.email)}
             >
-                {displayOptions.map(option => (
-                    <option key={option.email} value={option.email}>
+                {displayOptions.map((option, i) => (
+                    <option key={i} value={option.email}>
                         {option.name}
                     </option>
                 ))}

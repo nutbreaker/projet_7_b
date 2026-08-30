@@ -20,10 +20,22 @@ export default function ModalUpdateProject(
     }
 ) {
     const optionsFetcher = useSearchUsers();
+
+    const projectMembers = [...project.members.map(member => member.user), project.owner];
     const [title, setTitle] = useState(project.name);
     const [description, setDescription] = useState(project.description);
     const isFormInvalid = title === '' || description === '';
-    const [state, action] = useActionState(formAction, { error: '', fields: { name: project.name, description: project.description, contributors: project.members.map(member => member.user) }, details: [] });
+    const [state, action] = useActionState(
+        formAction,
+        {
+            error: '',
+            fields: {
+                name: project.name,
+                description: project.description,
+                contributors: projectMembers
+            },
+            details: []
+        });
 
     return (
         <Modal id={id} className={styles['modal-create-project']}>
@@ -36,7 +48,12 @@ export default function ModalUpdateProject(
                 <Input id='name' type='text' defaultValue={state.fields.name} label='Titre*' inputChangeHandler={(e) => setTitle(e.target.value.trim())} />
                 <Input id='description' defaultValue={state.fields.description} type='text' label='Description*' inputChangeHandler={(e) => setDescription(e.target.value.trim())} />
 
-                <Select name={'contributors'} label={'Contributeurs'} defaultValue={state.fields.contributors} optionsFetcher={optionsFetcher}></Select>
+                <Select
+                    name={'contributors'}
+                    label={'Contributeurs'}
+                    defaultValue={state.fields.contributors}
+                    optionsFetcher={optionsFetcher}
+                />
 
                 {
                     state.error &&

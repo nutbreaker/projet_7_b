@@ -39,5 +39,5 @@ export async function handleSignup(prevState: unknown, formData: FormData) {
         };
     }
 
-    redirect('/dashboard');
+    redirect('/profile');
 }

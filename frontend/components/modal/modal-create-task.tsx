@@ -9,7 +9,7 @@ import Input from "../form-element/input";
 import styles from './modal-create-task.module.css';
 import Button from "../buttons/button";
 import Tag from "../tag/tag";
-import { Project } from "@/types/api.types";
+import { Project, TaskAssignee } from "@/types/api.types";
 import SelectAssignee from "../form-element/selectAssignee";
 
 export default function ModalCreateTask(
@@ -38,6 +38,7 @@ export default function ModalCreateTask(
             details: []
         }
     );
+    const projectMembers = [...project.members, { userId: project.owner.id, ...project.owner, user: { ...project.owner } }];
 
     return (
         <Modal id={id} className={styles['modal-create-task']}>
@@ -52,7 +53,7 @@ export default function ModalCreateTask(
 
                 <Input id='due-date' defaultValue={state?.fields?.dueDate || ''} type='date' label='Echéance*' inputChangeHandler={(e) => setDueDate(e.target.value.trim())} />
 
-                <SelectAssignee  name={'assignees'} label={'Assigné à'} defaultValue={state?.fields?.assigneeIds || []} members={project.members}></SelectAssignee>
+                <SelectAssignee  name={'assignees'} label={'Assigné à'} defaultValue={state?.fields?.assigneeIds || []} members={projectMembers as unknown as TaskAssignee[]}></SelectAssignee>
 
                 <fieldset className={styles['modal-form-status-radio']}>
                     <legend className={'body-s-black'}>Statut :</legend>
