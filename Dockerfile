@@ -9,8 +9,8 @@ WORKDIR /app/backend
 RUN cp .env.example .env
 
 RUN npm install
-RUN npx prisma generate
-RUN npx prisma migrate deploy
+RUN npm run db:generate
+RUN npm run db:push
 RUN npm run seed
 RUN npm run build
 
