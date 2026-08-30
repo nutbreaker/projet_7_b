@@ -2,6 +2,7 @@
 
 import { getSessionToken } from '@/services/session';
 import { revalidatePath } from 'next/cache';
+import { updateAuthProfile } from '@/services/auth-profile';
 
 // FIXME fix backend to allow user's password update
 // api inconsistency
@@ -10,37 +11,33 @@ import { revalidatePath } from 'next/cache';
 export async function handleProfile(prevState: unknown, formData: FormData) {
     const firstName = formData.get('first-name');
     const lastName = formData.get('last-name');
-    const email = formData.get('email');
-    const password = formData.get('password');
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
 
-    const token = await getSessionToken();
-    // TODO extract this into its own service
+    const token = (await getSessionToken()) || '';
+
     try {
-        const response = await fetch('http://localhost:8000/auth/profile', {
-            method: 'PUT',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: `${firstName} ${lastName}`,
-                email,
-                password
-            }),
+        const response = await updateAuthProfile(token, {
+            name: `${firstName} ${lastName}`,
+            email,
+            password
         });
 
-        const json = await response.json();
-
-        if (!response.ok) {
+        if (!response.success) {
             return {
-                message: json.message || 'Impossible de mettre à jour le profil',
-                ...json
+                ...response,
+                message: response.message || 'Impossible de mettre à jour le profil'
             };
         }
 
         revalidatePath('/profile');
 
+        return response;
     } catch {
-        return { error: 'Une erreur imprévue s\'est produite veuillez réessayer.' }
+        return {
+            success: false as const,
+            message: 'Une erreur imprévue s\'est produite veuillez réessayer.',
+            error: 'UnexpectedError'
+        };
     }
 }

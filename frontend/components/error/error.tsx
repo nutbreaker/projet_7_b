@@ -1,25 +1,36 @@
 import styles from './error.module.css';
 
+type ErrorDetail = {
+    field?: string;
+    message?: string;
+};
+
 type ApiResponse = {
-    success: boolean,
-    message: string
-    data?: { errors?: [{field?: string, message?: string}] },
+    success?: boolean,
+    message?: string
+    data?: { errors?: ErrorDetail[] } | unknown,
     error?: string
 };
 
 
-export default function Error({ success = true, message, data }: ApiResponse) {
+export default function Error({ success = true, message = 'Erreur inconue', data }: ApiResponse) {
     if (success) return null;
 
-    const hasErrors = data && data.errors && data.errors.length;
+    const errorData = data as { errors?: ErrorDetail[] } | undefined;
+    const hasErrors = errorData?.errors && errorData.errors.length;
 
     return (
         <div className={`${styles['error-message']} body-s-system-error-red`}>
-            <p>
-                {message}
-            </p>
-
-            <ul>{hasErrors && data?.errors?.map((error) => (<li key={error.field}>{error.field} {error.message}</li>))}</ul>
+            <p>{message}</p>
+            {hasErrors && (
+                <ul>
+                    {errorData?.errors?.map((err, index) => (
+                        <li key={index}>
+                            {err.field} {err.message}
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
-    )
+    );
 }
