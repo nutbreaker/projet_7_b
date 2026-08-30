@@ -1,7 +1,8 @@
 services:
-  app:
+  abricot:
     build: .
     image: abricot:latest
+    restart: unless-stopped 
     ports:
       - "8081:3000"
     volumes:
