@@ -2,14 +2,12 @@
 // export const dynamic = 'force-dynamic'; // Meh ...
 
 import { deleteSessionCookie } from '@/services/session';
-import { NextResponse } from 'next/server';
+import { redirect } from 'next/navigation';
 
 // https://nextjs.org/docs/app/getting-started/route-handlers
 
-export async function GET(request: Request) {
+export async function GET() {
     await deleteSessionCookie();
 
-    const redirectUrl = new URL('/signin', request.url);
-
-    return NextResponse.redirect(redirectUrl);
+    redirect('/signin');
 }
