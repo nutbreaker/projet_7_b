@@ -26,7 +26,8 @@ export default function TaskProject({ userName, project, task, editable = true, 
     const statusValues = {
         'TODO': { type: 'error' as const, label: 'A faire' },
         'IN_PROGRESS': { type: 'warning' as const, label: 'En cours' },
-        'DONE': { type: 'success' as const, label: 'Terminée' }
+        'DONE': { type: 'success' as const, label: 'Terminée' },
+        'CANCELLED': { type: 'grey' as const, label: 'Annulée' }
     };
     const assigneesEls = task.assignees.map((assignee, index) => (
         <span className={styles['task-project-assignee']} key={index}>
@@ -39,7 +40,18 @@ export default function TaskProject({ userName, project, task, editable = true, 
     const editModalId = `edit-modal-${task.id}`;
     const deleteModalId = `delete-modal-${task.id}`;
 
-    const [addCommentState, addCommentAction] = useActionState(handleAddComment, { error: '', fields: {}, details: [] });
+    const [addCommentState, addCommentAction] = useActionState(
+        handleAddComment,
+        {
+            error: '',
+            fields: {
+                projectId: '',
+                taskId: '',
+                content: ''
+            },
+            details: []
+        }
+    );
     const fullUrl = searchParams.toString()
         ? `${pathname}?${searchParams.toString()}`
         : pathname;
