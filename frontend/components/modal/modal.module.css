@@ -10,6 +10,8 @@
     border: none;
     border-radius: 10px;
     background-color: var(--neutral-white);
+
+    overscroll-behavior: contain;
 }
 
 .modal[open] {
